@@ -15,7 +15,7 @@ mkdir -p registry/{auth,certs,data,conf}
 
 Create certificate  
 ```
-# openssl req -x509 -new -days 365 -nodes -out certs/domain.crt -keyout certs/domain.key -subj '/CN=registry.example.com/'
+# openssl req -x509 -new -days 365 -nodes -out certs/domain.crt -keyout certs/domain.key -subj '/CN=registry.example.com/' -addext "subjectAltName = IP:192.168.43.202"
 Generating a RSA private key
 .......+++++
 ...........+++++
