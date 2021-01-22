@@ -15,11 +15,12 @@ mkdir -p registry/{auth,certs,data,conf}
 
 Create certificate  
 ```
-# openssl req -x509 -new -days 365 -nodes -out certs/domain.crt -keyout
-certs/domain.key
-...
-Common Name (e.g. server FQDN or YOUR name) []:registry.example.com
-...
+# openssl req -x509 -new -days 365 -nodes -out certs/domain.crt -keyout certs/domain.key -subj '/CN=registry.example.com/'
+Generating a RSA private key
+.......+++++
+...........+++++
+writing new private key to 'certs/domain.key'
+-----
 ```
 
 Create user and password file  
