@@ -29,12 +29,12 @@ Vagrant 2.2.10
 
 ### Build Base Images
 1. Build Ubuntu base image
-  * [Build Ubuntu 18.04](labs/build_image/ubuntu-1804/)
-  * [Build Ubuntu 20.04](labs/build_image/ubuntu-2004/) - Not ready yet
+  * [Build Ubuntu 18.04](build_image/ubuntu-1804/)
+  * [Build Ubuntu 20.04](build_image/ubuntu-2004/) - Not ready yet
 
-2. [Build Kubernetes image](labs/build_image/k8s/)
-3. Storage
-If you want remote disk in your test cluster [build Ceph image](labs/build_image/ceph/) too.
+2. [Build Kubernetes image](build_image/k8s/)
+3. Storage  
+If you want remote disk in your test cluster [build Ceph image](build_image/ceph/) too.
 
 ### Add Vagrant box to local vagrant
 ```
