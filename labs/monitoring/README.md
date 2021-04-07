@@ -1,3 +1,11 @@
+# Kubernetes Monitoring
+Kubernetes monitoring need these tools:
+* metric-server: API server use this tools in autoscaling and top pods and top nodes
+* kube-state-metrics: 
+* cAdvisor: Integrate in kubelet and accessable with /metrics/cadvisor. cAdvisor export container metrics like, CPU, Memory, Network and ...
+* node-exporter: Export node metrics
+
+
 # metric-server
 Documentation and manifest can be found in Github  
 ```
@@ -66,4 +74,39 @@ $ kubectl -n kube-system get service kube-dns -o yaml
 ...
 ```
 
+# Blackbox Exporter
+** This isnt part of CKA exam **
+You can find project at [github repo](https://github.com/prometheus/blackbox_exporter)  
 
+Install with helmi([artifacthub](https://artifacthub.io/packages/helm/prometheus-community/prometheus-blackbox-exporter))
+```
+helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+helm repo update
+helm install [RELEASE_NAME] prometheus-community/prometheus-blackbox-exporter
+```
+
+# Deploy Prometheus 
+** This isnt part of CKA exam **
+Prometheus have two deployment method
+* Prometheus Deployment
+* prometheus-oprator
+
+### Prometheus Deployment
+Prometheus manifests include
+* Serviceaccount
+* ClusterRole and ClusterRoleBinding to access metrics api
+* Configmap: Prometheus config
+* Deployment: Deployment Prometheus service
+
+```
+cd manifests
+kubectl apply -f prometheus-deployment.yaml
+```
+
+### prometheus-operator
+** This isnt part of CKA exam **
+
+```
+wget https://raw.githubusercontent.com/prometheus-operator/prometheus-operator/master/bundle.yaml
+kubectl apply -f bundle.yaml
+```
