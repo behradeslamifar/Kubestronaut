@@ -159,6 +159,7 @@ $ kubectl get svc  -o wide --show-labels --all-namespaces
 
 ### [Logging/Monitoring](https://kubernetes.io/docs/concepts/cluster-administration/logging/) 5%
 * [Monitoring Kubernetes](https://www.datadoghq.com/blog/monitoring-kubernetes-era/)
+  * [Metrics for Kubernetes System Components](https://kubernetes.io/docs/concepts/cluster-administration/system-metrics/)
 * [Understand how to monitor all cluster components](https://kubernetes.io/docs/tasks/debug-application-cluster/resource-usage-monitoring/)
 * [Pod and Node metrics](https://kubernetes.io/docs/reference/kubectl/cheatsheet/#interacting-with-running-pods)
 * Understand how to monitor applications
