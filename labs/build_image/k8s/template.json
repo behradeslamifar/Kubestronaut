@@ -2,20 +2,20 @@
   "variables": {
     "ssh_password": "user",
     "ssh_user": "user",
-    "build": "200820"
+    "build": "210408"
   },
   "builders": [
     {
       "boot_wait": "10s",
       "ssh_timeout":"30m",
-      "source_path": "../ubuntu-1804/output-virtualbox-iso/ubuntu-18.04-{{user `build`}}.ova",
-      "checksum": "md5:fd809e38c92e58b36eb14c2b9f314609",
+      "source_path": "../ubuntu-2004/output-virtualbox-iso/ubuntu-20.04-{{user `build`}}.ova",
+      "checksum": "md5:e40691e7ae6a6efc10601ccb922645bf",
       "format": "ova",
       "shutdown_command": "echo 'packer' | sudo -S shutdown -P now",
       "ssh_password": "{{user `ssh_password`}}",
       "ssh_username": "{{user `ssh_user`}}",
       "type": "virtualbox-ovf",
-      "vm_name":"ubuntu-18.04-k8s-1.18.8",
+      "vm_name":"ubuntu-20.04-k8s-1.20.5",
       "communicator": "ssh", 		
       "ssh_pty": "true"
     }
