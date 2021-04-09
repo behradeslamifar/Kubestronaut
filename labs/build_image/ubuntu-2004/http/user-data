@@ -1,6 +1,8 @@
-# cloud-config
+#cloud-config
 autoinstall:
   version: 1
+  refresh-installer:
+    update: no
   locale: en_US
   keyboard:
     layout: en
@@ -9,19 +11,29 @@ autoinstall:
     network:
       version: 2
       ethernets:
-        ens33:
+        enp0s3:
           dhcp4: true
   storage:
     layout:
       name: lvm
+    swap:
+      size: 0
   identity:
     hostname: ubuntu
-    username: user 
-    password: $6$uofntNmz$9JnhoZ3lS2hxRQPYhQDrweRM/yKsBDst3vO8MtjcDr6Hsvo8SiOlKV560zNoOHG.Jq/ejZYZ.92Dblo8FPbWc1
+    username: user
+    password: $6$rounds=4096$W3f/LcTeHm5e$y9bUUM7IETO8MB79OYG3wlc4sQJ5VXK1IHPPJQv3X7.4.VCOauGQ0nHadX8QAxe1xUToCD0mgv/cKbWHtERc.1
   ssh:
     install-server: yes
+    allow-pw: true
   user-data:
     disable_root: false
+  packages:
+    - apt-transport-https
+    - curl
+    - ca-certificates
+    - software-properties-common
+    - vim
   late-commands:
     - 'sed -i "s/dhcp4: true/&\n      dhcp-identifier: mac/" /target/etc/netplan/00-installer-config.yaml'
-    - echo 'user ALL=(ALL) NOPASSWD:ALL' > /target/etc/sudoers.d/user
+  late-commands:
+    - "echo 'user    ALL=(ALL)  NOPASSWD:ALL' >> /etc/sudoers"

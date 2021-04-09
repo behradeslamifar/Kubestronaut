@@ -1,0 +1,64 @@
+{
+  "variables": {
+    "ssh_password": "user",
+    "ssh_user": "user",
+    "iso_path": "/home/behrad/Downloads/ISO/ubuntu-20.04.1-live-server-amd64.iso",
+    "iso_hash": "md5:f3a306f40e4a313fb5a584d73b3dee8f",
+    "build": "210408"
+  },
+  "builders": [
+    {
+      "vm_name":"ubuntu-20.04-{{user `build`}}",
+      "type": "virtualbox-iso",
+      "guest_os_type": "Ubuntu_64",
+      "format": "ova",
+      "headless": false,
+
+      "iso_checksum": "{{user `iso_hash`}}",
+      "iso_url": "{{user `iso_path`}}",
+      "shutdown_command": "echo 'packer' | sudo -S shutdown -P now",
+      "guest_additions_url": "/home/behrad/Downloads/ISO/VBoxGuestAdditions_6.1.18.iso",
+      "guest_additions_sha256": "904432eb331d7ae517afaa4e4304e6492b7947b46ecb8267de7ef792c4921b4c",
+      "guest_additions_mode": "attach",
+
+      "ssh_password": "{{user `ssh_password`}}",
+      "ssh_username": "{{user `ssh_user`}}",
+      "ssh_handshake_attempts": "50",
+      "ssh_pty": "true",
+      "ssh_timeout":"30m",
+
+      "http_directory": "http",
+      "memory": "2048",
+
+      "boot_wait": "5s",
+      "boot_command": [
+        "<enter><enter><f6><esc><wait> ",
+        "autoinstall ds=nocloud-net;s=http://{{ .HTTPIP }}:{{ .HTTPPort }}/",
+        "<enter>"
+      ]
+    }
+  ],
+  "provisioners":[
+    {
+	"type": "shell",
+        "inline": [ "while [ ! -f /var/lib/cloud/instance/boot-finished ]; do echo 'Waiting for cloud-init...'; sleep 1; done" ]
+    },
+    {
+       "type":"shell",
+       "script":"setup/install-minimum-package.sh"
+    },
+    {
+       "type":"shell",
+       "script":"setup/install-guest-additions.sh"
+    }
+  ], 
+  "post-processors": [
+    [
+      {
+        "type": "vagrant",
+        "keep_input_artifact": true,
+        "provider_override": "virtualbox"
+      }
+    ]
+  ]
+}

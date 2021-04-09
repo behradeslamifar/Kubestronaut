@@ -1,0 +1,79 @@
+{
+  "variables": {
+    "ssh_password": "user",
+    "ssh_user": "user",
+    "iso_path": "/home/behrad/Downloads/ISO/ubuntu-20.04.1-legacy-server-amd64.iso",
+    "iso_hash": "md5:b92a9fac59262a934e6682191a6cbf10",
+    "build": "210408"
+  },
+  "builders": [
+    {
+      "vm_name":"ubuntu-20.04-{{user `build`}}",
+      "type": "virtualbox-iso",
+      "guest_os_type": "Ubuntu_64",
+      "format": "ova",
+
+      "ssh_password": "{{user `ssh_password`}}",
+      "ssh_username": "{{user `ssh_user`}}",
+      "ssh_timeout":"30m",
+      "communicator": "ssh", 		
+      "ssh_pty": "true",
+
+      "http_directory": "http",
+      "memory": "2048",
+
+      "boot_wait": "10s",
+      "boot_command": [
+        "<esc><wait>",
+        "<esc><wait>",
+        "<enter><wait>",
+        "/install/vmlinuz<wait>",
+        " initrd=/install/initrd.gz",
+        " auto-install/enable=true",
+        " debconf/priority=critical",
+        " preseed/url=http://{{ .HTTPIP }}:{{ .HTTPPort }}/preseed.cfg<wait>",
+        " -- <wait>",
+        "<enter><wait>"
+      ],
+      "export_opts": [
+        "--manifest",
+        "--vsys",
+        "0"
+      ],
+
+      "iso_checksum": "{{user `iso_hash`}}",
+      "iso_url": "{{user `iso_path`}}",
+      "guest_additions_url": "/usr/share/virtualbox/VBoxGuestAdditions.iso",
+      "guest_additions_sha256": "88db771a5efd7c048228e5c1e0b8fba56542e9d8c1b75f7af5b0c4cf334f0584",
+      "guest_additions_mode": "attach",
+
+      "shutdown_command": "echo 'packer' | sudo -S shutdown -P now"
+    }
+  ],
+  "provisioners":[
+    {
+       "type": "shell",
+       "execute_command": "echo '{{user `ssh_password`}}' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'",
+       "inline": [
+          "echo '{{user `ssh_user`}}    ALL=(ALL)  NOPASSWD:ALL' >> /etc/sudoers"
+       ]
+    },
+    {
+       "type":"shell",
+       "script":"setup/install-minimum-package.sh"
+    },
+    {
+       "type":"shell",
+       "script":"setup/install-guest-additions.sh"
+    }
+  ], 
+  "post-processors": [
+    [
+      {
+        "type": "vagrant",
+        "keep_input_artifact": true,
+        "provider_override": "virtualbox"
+      }
+    ]
+  ]
+}
