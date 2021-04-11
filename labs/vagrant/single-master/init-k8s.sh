@@ -846,7 +846,7 @@ metadata:
 
 EOF
 
-kubectl --kubeconfig /etc/kubernetes/admin.conf create -f calico.yaml
+sudo kubectl --kubeconfig /etc/kubernetes/admin.conf create -f calico.yaml
 sudo cp /etc/kubernetes/admin.conf /root/.kube/config
 echo 'source <(kubectl completion bash)' | sudo tee -a /root/.bashrc
 sudo kubectl taint node master-1 node-role.kubernetes.io/master-

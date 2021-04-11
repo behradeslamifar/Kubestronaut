@@ -6,10 +6,10 @@ KUBE_VERSION=1.20.5
 sudo kubeadm --kubernetes-version $KUBE_VERSION config images pull
 
 # Pull Calico images
-sudo docker pull calico/cni:v3.14.2
-sudo docker pull calico/pod2daemon-flexvol:v3.14.2
-sudo docker pull calico/node:v3.14.2
-sudo docker pull calico/kube-controllers:v3.14.2
+sudo docker pull calico/cni:v3.18.1
+sudo docker pull calico/pod2daemon-flexvol:v3.18.1
+sudo docker pull calico/node:v3.18.1
+sudo docker pull docker.io/calico/kube-controllers:v3.18.1
 
 # Remove proxy
 #sudo rm /etc/systemd/system/docker.service.d/override.conf

@@ -13,7 +13,7 @@ mv packer /usr/local/bin/
 You can find latest version from [Ubuntu.com](http://cdimage.ubuntu.com/releases/18.04/release/). 
 
 3. Downlaod  VirtualBox GuestAdditions iso
-Find proper version at [VirtualBox Website](http://download.virtualbox.org/virtualbox/6.1.18/VBoxGuestAdditions_6.1.18.iso)
+Find proper version at [VirtualBox Website](http://download.virtualbox.org/virtualbox/)
 
 
 ## Configuration
