@@ -1,202 +1,289 @@
+[![License: CC BY-SA 4.0](https://licensebuttons.net/l/by-sa/4.0/80x15.png)](https://creativecommons.org/licenses/by-sa/4.0/)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
+
 # Kubernetes Certified Administration
 
 Online resources that will help you prepare for taking the Kubernetes Certified Administrator Certification exam.
 
-**Disclaimer**: This is not likely a comprehensive list as the exam will be a moving target with the fast pace of k8s development - please make a pull request if there something wrong or that should be added, or updated in here.
+**Disclaimer**: This is not likely a comprehensive list as the exam will be a moving target with the fast pace of k8s development - please make a pull request if there something wrong, should be added, or updated.
 
 I tried to restrict the cross references of resources to [kubernetes.io](kubernetes.io). Youtube videos and other blog resources are optional; however, I still found them useful in my k8s learning journey.
 
-Ensure you have the right version of Kubernetes documentation selected (e.g. v1.18 as of 23rd April 2020 exam) especially for API objects and annotations.
+Ensure you have the right version of Kubernetes documentation selected (e.g. v1.21 as of June 2021 exam) especially for API objects and annotations.
 
-## Exam Objectives
+LDR:  **practice**       **practice**      **practice**
+
+## Other CK exams:
+- [Certified Kubernetes Security Specialist CKS](https://github.com/walidshaari/Certified-Kubernetes-Secuirty-Specialist)
+- [Certified Kubernetes Application Developer CKAD](https://github.com/dgkanatsios/CKAD-exercises)
+
+## CKA 2021 Exam Objectives
 
 These are the exam objectives you review and understand in order to pass the test.
 
 * [CNCF Exam Curriculum repository ](https://github.com/cncf/curriculum)
 
+### [ Cluster Architecture, Installation, and Configuration](https://youtu.be/vS-wXo2qbPs) 25%
+1. [Manage role based access control](https://kubernetes.io/docs/reference/access-authn-authz/rbac/)
+    - [Lab: RBAC with Kubernetes in Minikube](https://medium.com/@HoussemDellai/rbac-with-kubernetes-in-minikube-4deed658ea7b)
+1. [Use kubeadm to install a basic cluster](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm/)
+    - [Lab: Install Kubernetes On Ubuntu](https://phoenixnap.com/kb/install-kubernetes-on-ubuntu)
+1. [Manage a highly available Kubernetes cluster](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/high-availability/)
+    - [Options for Highly Available topology](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/ha-topology/)
+    - [Weaveworks Kubeadm HA cluster](https://www.weave.works/blog/running-highly-available-clusters-with-kubeadm)
+1. [Provision underlying infrastructure to deploy Kubernetes cluster](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/)
+1. [Peform a version upgrade on Kubernetes cluster using kubeadm](https://kubernetes.io/docs/reference/setup-tools/kubeadm/kubeadm-upgrade/)
+1. [implment etcd backup and restore](https://kubernetes.io/docs/tasks/administer-cluster/configure-upgrade-etcd/#backing-up-an-etcd-cluster)
 
-### [Core Concepts](https://kubernetes.io/docs/concepts/) 19%
-* [Understand the Kubernetes API primitives](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.16/)
-  * [concepts: Kubernetes Objects](https://kubernetes.io/docs/concepts/overview/working-with-objects/kubernetes-objects/)
-  * youtube: [Kubernetes Webinar Series - Kubernetes Architecture 101](https://www.youtube.com/watch?v=zeS6OyDoy78)
-* [Understand the Kubernetes cluster architecture](https://kubernetes.io/docs/concepts/overview/components/)
-  * youtube: [A Technical Overview of Kubernetes (CoreOS Fest 2015) by Brendan Burns](https://www.youtube.com/watch?v=WwBdNXt6wO4)
-* [Understand Services and other network primitives](https://kubernetes.io/docs/concepts/services-networking/service/)
-  * youtube: [Life of a Packet [I] - Michael Rubin, Google](https://www.youtube.com/watch?v=0Omvgd7Hg1I)
-  * youtube: [The ins and outs of networking in Google Container Engine and Kubernetes (Google Cloud Next '17)](https://www.youtube.com/watch?v=y2bhV81MfKQ)
-  
-*  Example Nginx deployment:
-```yaml
-apiVersion: apps/v1
-kind: Deployment
+[Kubecon Europe 2020: Kubeadm deep dive](https://youtu.be/DhsFfNSIrQ4)
+<details>
+<summary> sample commands used during backup/restore/update of nodes </summary>
+<p>
+
+```
+#etcd backup and restore brief
+export ETCDCTL_API=3  # needed to specify etcd api versions, not sure if it is needed anylonger with k8s 1.19+ 
+etcdctl snapshot save -h   #find save options
+etcdctl snapshot restore -h  #find restore options
+
+## possible example of save, options will change depending on cluster context, as TLS is used need to give ca,crt, and key paths
+etcdctl snapshot save /backup/snapshot.db  --cert=/etc/kubernetes/pki/etcd/server.crt  --key=/etc/kubernetes/pki/etcd/server.key --cacert=/etc/kubernetes/pki/etcd/ca.crt
+
+
+# evicting pods/nodes and bringing back node back to cluster
+kubectl drain  <node># to drain a node
+kubectl uncordon  <node> # to return a node after updates back to the cluster from unscheduled state to Ready
+kubectl cordon  <node>   # to not schedule new pods on a node
+
+#backup/restore the cluster (e.g. the state of the cluster in etcd)
+
+
+# upgrade kubernetes worker node
+kubectl drain <node>
+apt-get upgrade -y kubeadm=<k8s-version-to-upgrade>
+apt-get upgrade -y kubelet=<k8s-version-to-upgrade>
+kubeadm upgrade node config --kubelet-version <k8s-version-to-upgrade>
+systemctl restart kubelet
+kubectl uncordon <node>
+
+
+#kubeadm upgrade steps
+kubeadm upgrade plan
+kubeadm upgrade apply
+
+
+```
+
+</p>
+</details> 
+
+### Workloads & Scheduling – 15%
+1. [Understand deployments and how to perform rolling update and rollbacks](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/)
+2. Use [ConfigMaps](https://kubernetes.io/docs/concepts/configuration/configmap/) and [Secrets](https://kubernetes.io/docs/concepts/configuration/secret/) to configure applications
+  - [configure a pod with a configmap](https://kubernetes.io/docs/tasks/configure-pod-container/configure-pod-configmap/)
+  - [configure a pod with a secret](https://kubernetes.io/docs/tasks/inject-data-application/distribute-credentials-secure/)
+3. Know how to [scale applications](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/#scaling-a-deployment)
+  - [scaling a statefulset](https://kubernetes.io/docs/tasks/run-application/scale-stateful-set/)
+  - [scaling a replicaset](https://kubernetes.io/docs/concepts/workloads/controllers/replicaset/#scaling-a-replicaset)
+4. Understand the primitives used to create robust, self-healing, application deployments
+ - [Replicaset](https://kubernetes.io/docs/concepts/workloads/controllers/replicaset/)
+ - [Deployments](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/)
+ - [Statefulsets](https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/)
+ - [Daemonset](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/)
+5. Understand [how resource limits can affect Pod scheduling](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#how-pods-with-resource-requests-are-scheduled)
+6. Awareness of manifest management and common templating tools
+  * [Kustomize](https://kubernetes.io/docs/tasks/manage-kubernetes-objects/kustomization/)
+    - [Kustomize Blog](https://kubernetes.io/blog/2018/05/29/introducing-kustomize-template-free-configuration-customization-for-kubernetes/)
+  * [manage kubernetes objects](https://kubernetes.io/docs/tasks/manage-kubernetes-objects/)
+  * [Install service catalog using helm](https://kubernetes.io/docs/tasks/service-catalog/install-service-catalog-using-helm/)
+    - Non-k8s.io resource: CNCF Kubecon video: [An introduction to Helm - Bridget Kromhout, Microsoft & Marc Khouzam, City of Montreal](https://youtu.be/x2w6T0sE50w?list=PLj6h78yzYM2O1wlsM-Ma-RYhfT5LKq0XC)
+   - Non-k8s.io resource: External resource: [templating-yaml-with-code](https://learnk8s.io/templating-yaml-with-code)
+
+### Services & Networking – 20% 
+
+1. Understand [host networking configuration on the cluster nodes](https://kubernetes.io/docs/concepts/cluster-administration/networking/)
+2. Understand connectivity between Pods
+  - [The concept of Pods networking](https://kubernetes.io/docs/concepts/workloads/pods/#pod-networking)
+3. Understand ClusterIP, NodePort, LoadBalancer service types and endpoints
+   - [service](https://kubernetes.io/docs/concepts/services-networking/service/)
+4. Know how to use [Ingress controllers](https://kubernetes.io/docs/concepts/services-networking/ingress-controllers/) and [Ingress resources](https://kubernetes.io/docs/concepts/services-networking/ingress/#the-ingress-resource)
+  - [Ingress concepts]((https://kubernetes.io/docs/concepts/services-networking/ingress/))
+5. [Know how to configure and use CoreDNS](https://kubernetes.io/docs/tasks/administer-cluster/dns-custom-nameservers/)
+6. [Choose an appropriate container network interface plugin](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm/#pod-network)
+
+- [Kubernetes Networking Intro and Deep-Dive - Bowei Du & Tim Hockin, Google](https://youtu.be/tq9ng_Nz9j8)
+- [Kubernetes and Networks: why is this so dang hard?](https://youtu.be/xB190-yyJnY?t=241)
+- [Kubecon Eu 2020 Tutorial: Communication Is Key - Understanding Kubernetes Networking - Jeff Poole, Vivint Smart Home](https://youtu.be/InZVNuKY5GY?list=PLj6h78yzYM2O1wlsM-Ma-RYhfT5LKq0XC)
+
+
+### Storage – 10%
+
+1. Understand [storage classes](https://kubernetes.io/docs/concepts/storage/storage-classes/), [persistent volumes](https://kubernetes.io/docs/concepts/storage/persistent-volumes/)
+1. Understand [volume mode](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#volume-mode), [access modes](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#access-modes) and [reclaim policies](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#reclaim-policy) for volumes
+1. Understand [persistent volume claims](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#persistentvolumeclaims) primitive
+1. Know how to [configure applications with persistent storage](https://kubernetes.io/docs/tasks/configure-pod-container/configure-volume-storage/)
+
+<details>
+<summary> StorageClass, PersistentVolume, and PersitentVolumeClaim examples </summary>
+<p>
+
+```
+#### Storage Class example
+#
+
+#### Persistent Volume Claim example
+#
+kind: PersistentVolumeClaim
+apiVersion: v1
 metadata:
-  name: nginx-deployment
+  name: local-pvc
 spec:
-  replicas: 3
-  selector:
-    matchLabels:
-      app: nginx
-  template:
-    metadata:
-      labels:
-        app: nginx
-    spec:
-      containers:
-      - name: nginx
-        image: nginx:1.17.10
-        ports:
-        - containerPort: 80
+  accessModes:
+  - ReadWriteOnce
+  storageClassName: local-storage-sc
+  resources:
+    requests:
+      storage: 100Mi
+
+## Persistent Volume example
+#
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: local-pv
+spec:
+  accessModes:
+  - ReadWriteOnce
+  capacity:
+    storage: 200Mi
+  local:
+    path: /data/pv/disk021
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: local-storage-sc
+  volumeMode: Filesystem
+  
+###  Pod using the pvc
+#
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx
+  labels:
+    name: nginx
+spec:
+  containers:
+  - name: nginx
+    image: nginx
+    volumeMounts:
+      - name: local-persistent-storage
+        mountPath: /var/www/html
+  volumes:
+    - name: local-persistent-storage
+      persistentVolumeClaim:
+        claimName: local-pvc
 ```
-### [Installation, Configuration and Validation](https://github.com/kelseyhightower/kubernetes-the-hard-way/tree/f9486b081f8f54dd63a891463f0b0e783d084307) 12%
-* Design a Kubernetes cluster
-* [Install Kubernetes masters and nodes, including the use of TLS bootstrapping](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/)
-  * [TLS bootstrapping](https://kubernetes.io/docs/reference/command-line-tools-reference/kubelet-tls-bootstrapping/)
-  * [TLS BOOTSTRAPPING WITH BOOTSTRAP-TOKEN](https://ansilh.com/17-tls_bootstrapping/02-bootstrapping-with-token/)
-* [Configure secure cluster communications](https://kubernetes.io/docs/tasks/tls/managing-tls-in-a-cluster/)
-* [Configure a Highly-Available Kubernetes cluster](https://kubernetes.io/docs/admin/high-availability/)
-* [Know where to get the Kubernetes release binaries](https://kubernetes.io/docs/getting-started-guides/binary_release/#prebuilt-binary-release)
-* [Provision underlying infrastructure to deploy a Kubernetes cluster](https://github.com/kelseyhightower/kubernetes-the-hard-way/blob/f9486b081f8f54dd63a891463f0b0e783d084307/docs/01-infrastructure-gcp.md)
-* [Choose a network solution](https://kubernetes.io/docs/concepts/cluster-administration/networking/)
-* Choose your Kubernetes infrastructure configuration
-* Run end-to-end tests on your cluster    
-  * Some simple commands will cover most cases:
-```
-$ kubectl cluster-info
-$ kubectl get nodes
-$ kubectl get componentstatuses
-$ kubectl get pods -o wide --show-labels --all-namespaces
-$ kubectl get svc  -o wide --show-labels --all-namespaces
-```
 
-* For more advanced end to end testing, which may not be covered on the exam, also see:
-     * [End-To-End Testing in Kubernetes](https://github.com/kubernetes/community/blob/master/contributors/devel/sig-testing/e2e-tests.md)
-     * [Using CNCF k8s conformance](https://github.com/cncf/k8s-conformance/blob/master/instructions.md)
-     * [Heptio Sonobuoy Scanner](https://scanner.heptio.com/)
+</p>
+</details> 
 
-### Security 12%
-* [Securing a kubernetes cluster](https://kubernetes.io/docs/tasks/administer-cluster/securing-a-cluster/)
-    * youtube: [Building for Trust: How to Secure Your Kubernetes Cluster [I] - Alexander Mohr & Jess Frazelle](https://www.youtube.com/watch?v=YRR-kZub0cA)
-* [Know how to configure authentication and authorization](https://kubernetes.io/docs/admin/authorization/rbac/)
-  * [Access the api](https://kubernetes.io/docs/admin/accessing-the-api/)
-  * [Authentication](https://kubernetes.io/docs/reference/access-authn-authz/authentication/)
-  * [Authorization with RBAC](https://kubernetes.io/docs/admin/authorization/rbac/)
-  * [Admission Control](https://kubernetes.io/docs/admin/admission-controllers/)
-* [Understand Kubernetes security primitives]
-  * [Pod Security Policy](https://kubernetes.io/docs/concepts/policy/pod-security-policy/)
-    * [PSP and RBAC](https://github.com/kubernetes/examples/blob/master/staging/podsecuritypolicy/rbac/README.md)
-* [Know to configure network policies](https://kubernetes.io/docs/tasks/administer-cluster/declare-network-policy/)
-  * [Blog: Kubernetes network policy](https://ahmet.im/blog/kubernetes-network-policy/)
-  * [Katacoda Calico](https://www.katacoda.com/projectcalico/scenarios/calico)
-* [Create and manage TLS certificates for cluster components](https://kubernetes.io/docs/tasks/tls/managing-tls-in-a-cluster/)
-* Work with images securely
-* [Define security contexts](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/)
-* [Secure persistent key value store](https://kubernetes.io/docs/concepts/configuration/secret/)
-* Work with role-based access control
+### Troubleshooting – 30%
 
-### [Networking](https://kubernetes.io/docs/concepts/cluster-administration/networking/) 11%
-* [Understand the networking configuration on the cluster nodes](https://kubernetes.io/docs/concepts/cluster-administration/networking/)
-* Understand Pod networking concepts
-  * youtube: [The ins and outs of networking in Google Container Engine and Kubernetes (Google Cloud Next '17)](https://www.youtube.com/watch?v=y2bhV81MfKQ)
-  * youtube: [Networking with Kubernetes](https://www.youtube.com/watch?v=WwQ62OyCNz4)
-  * [Illustrated Guide To Kubernetes Networking by Tim Hockin](https://speakerdeck.com/thockin/illustrated-guide-to-kubernetes-networking)
-* Understand service networking
-  * youtube: [Life of a Packet [I] - Michael Rubin, Google](https://www.youtube.com/watch?v=0Omvgd7Hg1I)
-* [Deploy and configure network load balancer](https://kubernetes.io/docs/tasks/access-application-cluster/create-external-load-balancer/)
-* [Know how to use Ingress rules](https://kubernetes.io/docs/concepts/services-networking/ingress/)
-* [Know how to configure and use the cluster DNS](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/)
-  *  [Customizing DNS service](https://kubernetes.io/docs/tasks/administer-cluster/dns-custom-nameservers/)
-* [Understand CNI](https://github.com/containernetworking/cni)
-  * [More information on CNI](http://www.dasblinkenlichten.com/understanding-cni-container-networking-interface/)
-
-### Cluster Maintenance 11%
-* [Understand Kubernetes cluster upgrade process](https://kubernetes.io/docs/getting-started-guides/ubuntu/upgrades/)
-    * Best resource upgrade is to watch [TGI Kubernetes 011: Upgrading to 1.8 with kubeadm](https://youtu.be/x9doB5eJWgQ)
-* [Facilitate operating system upgrades](https://cloud.google.com/container-engine/docs/clusters/upgrade) #need review to make it more platform agnostic
-* [Implement backup and restore methodologies](https://kubernetes.io/docs/getting-started-guides/ubuntu/backups/)
-* [Etcd management/backups/restore](https://kubernetes.io/docs/tasks/administer-cluster/configure-upgrade-etcd)
-  *  [etcd Disaster Recovery](https://etcd.io/docs/v3.3.12/op-guide/recovery/)
-  *  [etcd Failure](https://etcd.io/docs/v3.3.12/op-guide/failures/)
-  *  [etcd Runtime Configureation](https://etcd.io/docs/v3.3.12/op-guide/runtime-configuration/)
+1. [Evaluate cluster and node logging](https://kubernetes.io/docs/concepts/cluster-administration/logging/)
+1. [Understand how to monitor applications](https://kubernetes.io/docs/tasks/debug-application-cluster/resource-usage-monitoring/)
+1. [Manage container stdout & stderr logs](https://kubernetes.io/docs/concepts/cluster-administration/logging/#logging-at-the-node-level)
+1. [Troubleshoot application failure](https://kubernetes.io/docs/tasks/debug-application-cluster/debug-application/)
+   - [Pending or termintated pods](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#troubleshooting)
+1. [Troubleshoot cluster component failure](https://kubernetes.io/docs/tasks/debug-application-cluster/debug-cluster/)
+1. [Troubleshoot networking](https://kubernetes.io/docs/tasks/debug-application-cluster/debug-cluster/)
+   - [DNS troubleshooting](https://kubernetes.io/docs/tasks/administer-cluster/dns-debugging-resolution/)
 
 
-### [Troubleshooting](https://kubernetes.io/docs/tasks/debug-application-cluster/troubleshooting/) 10%
-* [Troubleshoot application failure](https://kubernetes.io/docs/tasks/debug-application-cluster/determine-reason-pod-failure/)
-  * [Application Introspection and Debugging](https://kubernetes.io/docs/tasks/debug-application-cluster/debug-application-introspection/)
-  * [Services](https://kubernetes.io/docs/tasks/debug-application-cluster/debug-service/)
-* [Troubleshoot control plane failure](https://kubernetes.io/docs/tasks/debug-application-cluster/debug-cluster/)
-  * youtube [Kubernetes Day 2: Cluster Operations [I] - Brandon Philips, CoreOS](https://www.youtube.com/watch?v=U1zR0eDQRYQ)
-  * Safaribooksonline: [https://www.safaribooksonline.com/library/view/oscon-2016-video/9781491965153/video246982.html](https://www.safaribooksonline.com/library/view/oscon-2016-video/9781491965153/video246982.html)
-* [Troubleshoot worker node failure](https://kubernetes.io/docs/tasks/debug-application-cluster/debug-cluster/)
-* Troubleshoot networking
-
-### [Storage](https://kubernetes.io/docs/concepts/storage/volumes/) 7%
-* [Understand persistent volumes and know how to create them](https://kubernetes.io/docs/concepts/storage/persistent-volumes/)
-* [Understand access modes for volumes](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#access-modes)
-* [Understand persistent volume claims primitive](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#persistentvolumeclaims)
-* [Understand Kubernetes storage objects](https://kubernetes.io/docs/concepts/storage/volumes/#types-of-volumes)
-* [Know how to configure applications with persistent storage](https://kubernetes.io/docs/tasks/configure-pod-container/configure-volume-storage/)
-
-### Application Lifecycle Management 8%
-* [Understand Deployments and how to perform rolling updates and rollbacks](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/)
-* [Know various ways to configure applications](https://kubernetes.io/docs/concepts/cluster-administration/manage-deployment/)
-* [Know how to scale applications](https://kubernetes.io/docs/concepts/cluster-administration/manage-deployment/#scaling-your-application)
-* Understand the primitives necessary to create a self-healing application
-
-### Scheduling 5%
-* [Use label selectors to schedule Pods](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/)
-* [Understand the role of DaemonSets](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/)
-* [Understand how resource limits can affect Pod scheduling](https://kubernetes.io/docs/tasks/administer-cluster/memory-default-namespace/)
-* [Understand how to run multiple schedulers and how to configure Pods to use them](https://kubernetes.io/docs/tasks/administer-cluster/configure-multiple-schedulers/)
-* [Manually schedule a pod without a scheduler](https://kubernetes.io/docs/tasks/administer-cluster/static-pod/)
-   If you require a pod to start on a specific node, you can specify this in POD spec.nodeName, that is what DaemonSets do.
-* [Display scheduler events](https://stackoverflow.com/questions/28857993/how-does-kubernetes-scheduler-work/28874577#28874577)
-  /var/log/kube-scheduler.log on the control/master node
-  or use `kubectl describe` as in
-```
-  $kubectl describe pods <POD NAME UNDER Investigation>  | grep -A7 ^Events
-```
-* [Know how to configure the Kubernetes scheduler](https://kubernetes.io/docs/tasks/administer-cluster/configure-multiple-schedulers/)
-
-### [Logging/Monitoring](https://kubernetes.io/docs/concepts/cluster-administration/logging/) 5%
-* [Monitoring Kubernetes](https://www.datadoghq.com/blog/monitoring-kubernetes-era/)
-  * [Metrics for Kubernetes System Components](https://kubernetes.io/docs/concepts/cluster-administration/system-metrics/)
-* [Understand how to monitor all cluster components](https://kubernetes.io/docs/tasks/debug-application-cluster/resource-usage-monitoring/)
-* [Pod and Node metrics](https://kubernetes.io/docs/reference/kubectl/cheatsheet/#interacting-with-running-pods)
-* Understand how to monitor applications
-* [Manage cluster component logs](https://kubernetes.io/docs/tasks/debug-application-cluster/debug-cluster/#looking-at-logs)
-  * Master
-    * /var/log/kube-apiserver.log - API Server, responsible for serving the API
-    * /var/log/kube-scheduler.log - Scheduler, responsible for making scheduling decisions
-    * /var/log/kube-controller-manager.log - Controller that manages replication controllers
-  * Worker Nodes
-    * /var/log/kubelet.log - Kubelet, responsible for running containers on the node
-    * /var/log/kube-proxy.log - Kube Proxy, responsible for service load balancing
-* [Manage application logs](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#logs)
-## Practice Exam
-* [CKA Practice Exam Environment](https://github.com/arush-sal/cka-practice-environment)
 ## Tips:
 
-get familiar with:
-* [kubectl explain](https://blog.heptio.com/kubectl-explain-heptioprotip-ee883992a243)
-* [kubectl cheatsheet](https://kubernetes.io/docs/user-guide/kubectl-cheatsheet/)
+**practice**                                           **practice**                                         **practice**
+
+Get familiar with:
+* Familiarize yourself with the documentation, initially [concepts](https://kubernetes.io/docs/concepts/)  and mostly [tasks](https://kubernetes.io/docs/tasks/), **kubectl explain** command, [kubectl cheatsheet](https://kubernetes.io/docs/user-guide/kubectl-cheatsheet/), and [kubectl commands reference](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands)
+  - https://kubernetes.io/docs/concepts/ 
+  - https://kubernetes.io/docs/tasks/ 
+  - https://kubernetes.io/docs/user-guide/kubectl-cheatsheet/
+  - https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands
+*  `kubectl api-versions` and `kubectl  api-resources` wih `grep` for a specific resoruce e.g. pv, pvc, deployment, storageclass, ..etc can help figure out the **apiVersion**, and **kind** combined with explain below will help in constructing the yaml manifest
+* [kubectl explain --recurisve](https://blog.heptio.com/kubectl-explain-heptioprotip-ee883992a243) to construct out any yaml manifest you need and find its specd and details
+
 * When using kubectl for investigations and troubleshooting utilize the wide output it gives your more details
 ```
-     $kubectl get pods -o wide --show-labels --all-namespaces
+     $kubectl get pods -o wide  --show-labels  --all-namespaces
+     or
+     $kubectl get pods -o wide  --show-labels  -A     # -A is quicker than --all-namespaces
 ```
-* In `kubectl` utilizie `--all-namespaces` to ensure deployments, pods, objects are on the right name space, and right desired state
+* In `kubectl` utilizie `--all-namespaces or better -A` to ensure deployments, pods, objects are on the right name space, and right desired state
 
-* for events and troubleshooting utilize kubectl describe
+* for events and troubleshooting utilize kubectl describe if its pod/resource related and logs if it is application issue related
 ```
-     $kubectl describe pods <PODID>
+     $kubectl describe pods <PODID>   # for pod, deployment, other k8s resource issues/events
+     $kubectl logs <PODID>            # for container/application issues like crash loops
+     
 ```
-* the '-o yaml' in conjuction with `--dry-run` allows you to create a manifest template from an imperative spec, combined with `--edit` it allows you to modify the object before creation
+
+* [fast with kubectl](https://medium.com/faun/be-fast-with-kubectl-1-18-ckad-cka-31be00acc443)  e.g. the '-o yaml' in conjuction with `--dry-run=client` allows you to create a manifest template from an imperative spec, combined with `--edit` it allows you to modify the object before creation
 ```
-kubectl create service clusterip my-svc -o yaml --dry-run > /tmp/srv.yaml
+kubectl create service clusterip my-svc -o yaml --dry-run=client > /tmp/srv.yaml
 kubectl create --edit -f /tmp/srv.yaml
 ```
+* use kubectl [aliases](https://github.com/ahmetb/kubectl-aliases) to speed up and reduce typo errors, practice these alaises early at your work and study for the exam. some example aliases:
 
-* [Be fast with kubectl in 1.18](https://medium.com/faun/be-fast-with-kubectl-1-18-ckad-cka-31be00acc443)
+```
+alias k='kubectl'
+alias kg='kubectl get'
+alias kgpo='kubectl get pod'
+alias kcpyd='kubectl create pod -o yaml --dry-run=client'
+alias ksysgpo='kubectl --namespace=kube-system get pod'
 
-## Do you want more?
+alias kd='kubectl delete'
+alias kdf='kubectl delete -f'
+## for quick deletes you can add --force --grace-period=0  **Not sure if it is a good idea if you are in a production cluster**
+alias krmgf='kubectl delete --grace-period 0 --force'
+alias kgsvcoyaml='kubectl get service -o=yaml'
+alias kgsvcwn='watch kubectl get service --namespace'
+alias kgsvcslwn='watch kubectl get service --show-labels --namespace'
 
-- [Kubernauts resources list](https://docs.google.com/spreadsheets/d/10NltoF_6y3mBwUzQ4bcQLQfCE1BWSgUDcJXy-Qp2JEU/edit#gid=0)
+#example usage of aliases
+krmgf nginx-8jk71    # kill pod nginx-8jk71 using grace period 0 and force
+
+```
+* Enable [kubectl autocomplete](https://kubernetes.io/docs/reference/kubectl/cheatsheet/#bash). Autocomplete is the life saviour in any timebound exam as well as our day to day work (e.g. If autocomplete enabled `k -n [Press Tab]` will suggest available namespaces). Example command to enable autocomplete is available at official [kubectl Cheat Sheet](https://kubernetes.io/docs/reference/kubectl/cheatsheet/#bash) page, you don't have to remember anything. 
+```
+source <(kubectl completion bash) # setup autocomplete in bash into the current shell, bash-completion package should be installed first.
+echo "source <(kubectl completion bash)" >> ~/.bashrc # add autocomplete permanently to your bash shell.
+
+alias k=kubectl
+complete -F __start_kubectl k
+```
+
+## Miscellaneous (resources not allowed during exam):
+
+1. [Troubleshooting use cases by Ian/Container solutions](https://github.com/ContainerSolutions/kubernetes-examples)
+
+## Popular training and practice sites:
+*Double check if the course is uptodate with the latest exam information (e.g. api, or curicuilim)*
+
+- [Mumshad CKA with practice tests and mock exams](https://www.udemy.com/course/certified-kubernetes-administrator-with-practice-tests/) - Highly recommended
+- [Killer.sh CKA simulator](https://killer.sh/cka)         &#x27F9; use code **walidshaari** for **20%** discount  - they update frequently
+- [Kube Academy free How to prepare for the CKA exam training](https://kube.academy/courses/how-to-prepare-for-the-cka-exam)
+- [A Cloud Guru - Certified Kubernetes Administrator (CKA)](https://acloud.guru/overview/certified-kubernetes-administrator)  # k8s version 1.20 - last checked March 2021
+- [LinuxAcademy/ACloudGuru CKA course](https://acloud.guru/learn/7f5137aa-2d26-4b19-8d8c-025b22667e76)  # labs last checked were updated to 1.18
+- [rx-m online CKA course](https://rx-m.com/cka-online-training/)
+- [Pluralsight CKA course](https://www.pluralsight.com/paths/certified-kubernetes-administrator)
+- Duffie Cooly [hands-on CKA video](https://k8s.work/cka-lab.mp4) using KinD and accompanying [notes](https://hackmd.io/@mauilion/cka-lab)
+- [Stilian Stoilov](https://www.linkedin.com/in/stilian-stoilov-379972a9/) [practice questions](https://github.com/StenlyTU/K8s-training-official) - 40+ tasks with increasing difficulty.
+
+# What's Next:
+- Learn more about Kubernetes core components from [Duffie Cooly](https://twitter.com/mauilion) [TGIK Grokking playlist](https://www.youtube.com/playlist?list=PL7bmigfV0EqS6WxgWlH-p4dhkfuwcZ6-E)
+- [CKAD Certified Kubernetes Application Developer](https://www.cncf.io/certification/ckad/)
+- [CKS Certified Kubernetes Security Specialist](https://github.com/walidshaari/Certified-Kubernetes-Secuirty-Specialist)
+
+## Stargazers over time
+
+[![Stargazers over time](https://starchart.cc/walidshaari/Kubernetes-Certified-Administrator.svg)](https://starchart.cc/walidshaari/Kubernetes-Certified-Administrator)
+
