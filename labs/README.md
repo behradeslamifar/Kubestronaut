@@ -1,4 +1,6 @@
 # Kubernetes LAB
+This page is about prepare a lab for install Kuberenetes with kubeadm for CKA practice. There are other ways to setup cluster also:
+- [kind](kind.md)
 
 ## Install and Preparation
 
