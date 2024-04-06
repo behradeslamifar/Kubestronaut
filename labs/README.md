@@ -24,6 +24,17 @@ echo 'source <(kubectl completion bash)' >>~/.bashrc
 - In the Ubuntu VM install following application
   - [Install containerd from docker repository](https://docs.docker.com/engine/install/ubuntu/)
   - [Install kubectl, kubeadm, kubelet](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/#installing-kubeadm-kubelet-and-kubectl)
+- [Install nerdctl minimal](https://github.com/containerd/nerdctl/releases)
+- Install bash-completion
+```
+sudo apt install bash-completion
+```
+- Enable kubectl, kubeadm, nerdctl autocompletion
+```
+echo 'source <(kubectl completion bash)' >>~/.bashrc
+echo 'source <(kubeadm completion bash)' >>~/.bashrc
+echo 'source <(nerdctl completion bash)' >>~/.bashrc
+```
 - [Configure prerequisites in the VM](https://kubernetes.io/docs/setup/production-environment/container-runtimes/)
   - enable ip_forward and bridge for iptables.
 ```
@@ -48,7 +59,7 @@ sudo sysctl --system
   - Disable swap
 ```
 swapoff /path/to/swap
-sed -i 's/^\(.* swap .*\)$/#\1/' /etc/fstab
+sed -i 's/^\(.*swap.*\)$/#\1/' /etc/fstab
 ```
   - [Configure containerd for CRI](https://github.com/containerd/containerd/blob/main/docs/cri/config.md#full-configuration)
 
