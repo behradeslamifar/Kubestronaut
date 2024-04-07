@@ -62,6 +62,23 @@ swapoff /path/to/swap
 sed -i 's/^\(.*swap.*\)$/#\1/' /etc/fstab
 ```
   - [Configure containerd for CRI](https://github.com/containerd/containerd/blob/main/docs/cri/config.md#full-configuration)
+<details><summary>Update default config.toml with these</summary>
+<p>
+Add these parameters
+```
+[grpc]
+  max_recv_message_size = 16777216
+  max_send_message_size = 16777216
+```
 
-### First Master
-Clone from your VM to Install first Master with kubeadm
+Update this one
+```
+        SystemdCgroup = true
+```
+</p>
+</details>
+
+
+### Install Kubernetes Cluster with kubeadm
+- [Single Master](00-Install/basic-cluster.md)
+- [Highly-available Cluster](00-install/ha-cluster.md)
