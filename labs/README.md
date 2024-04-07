@@ -61,7 +61,7 @@ sudo sysctl --system
 swapoff /path/to/swap
 sed -i 's/^\(.*swap.*\)$/#\1/' /etc/fstab
 ```
-  - [Configure containerd for CRI](https://github.com/containerd/containerd/blob/main/docs/cri/config.md#full-configuration)
+  - [Configure containerd for CRI](https://github.com/containerd/containerd/blob/main/docs/cri/config.md#full-configuration) (copy default configuration from this link and update with below suggestion.
 <details><summary>Update default config.toml with these</summary>
 <p>
 Add these parameters
