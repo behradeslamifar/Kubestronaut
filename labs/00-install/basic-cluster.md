@@ -102,6 +102,9 @@ kubeadm join 192.168.88.100:6443 --token g7eyg1.6w664drzevp5n4ws \
 	--discovery-token-ca-cert-hash sha256:c2d56f6541f1ddfb7b0606d6cd058ace2cf7f8b7a0380a164d30af5e7a02b064 
 ```
 
+</p>
+</details>
+
 ## Initial Kubernetes Master Node with kubeadm config
 Generate default config file
 
