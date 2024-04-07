@@ -81,5 +81,5 @@ Update this one
 
 
 ### Install Kubernetes Cluster with kubeadm
-- [Single Master](00-Install/basic-cluster.md)
+- [Single Master](00-install/basic-cluster.md)
 - [Highly-available Cluster](00-install/ha-cluster.md)
