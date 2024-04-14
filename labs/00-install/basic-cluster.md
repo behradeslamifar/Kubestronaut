@@ -292,6 +292,7 @@ kubeadm join 192.168.88.100:6443 --token g7eyg1.6w664drzevp5n4ws \
 <details><summary>Expand this to see output logs</summary>
 <p>
 
+```
 [preflight] Running pre-flight checks
 [preflight] Reading configuration from the cluster...
 [preflight] FYI: You can look at this config file with 'kubectl -n kube-system get cm kubeadm-config -o yaml'
@@ -305,6 +306,7 @@ This node has joined the cluster:
 * The Kubelet was informed of the new secure connection details.
 
 Run 'kubectl get nodes' on the control-plane to see this node join the cluster.
+```
 
 </p>
 </details>
@@ -322,6 +324,7 @@ kubeadm config print join-defaults
 <details><summary>Expand this to see default configuration</summary>
 <p>
 
+```
 apiVersion: kubeadm.k8s.io/v1beta3
 caCertPath: /etc/kubernetes/pki/ca.crt
 discovery:
@@ -335,8 +338,41 @@ kind: JoinConfiguration
 nodeRegistration:
   criSocket: unix:///var/run/containerd/containerd.sock
   imagePullPolicy: IfNotPresent
-  name: master1
+  name: worker1
   taints: null
+```
 
 </p>
 </details>
+
+and change base on your requirement
+<details><summary>Join custom configuration</summary>
+<p>
+kubeadm join 192.168.88.100:6443 --token g7eyg1.6w664drzevp5n4ws \
+        --discovery-token-ca-cert-hash sha256:c2d56f6541f1ddfb7b0606d6cd058ace2cf7f8b7a0380a164d30af5e7a02b064
+
+```
+apiVersion: kubeadm.k8s.io/v1beta3
+caCertPath: /etc/kubernetes/pki/ca.crt
+kind: JoinConfiguration
+discovery:
+  bootstrapToken:
+    apiServerEndpoint: 192.168.88.100:6443
+    caCertHashes:
+    - sha256:c2d56f6541f1ddfb7b0606d6cd058ace2cf7f8b7a0380a164d30af5e7a02b064
+    token: g7eyg1.6w664drzevp5n4ws
+  timeout: 5m0s
+  tlsBootstrapToken: knxi9g.e2kyjaxymkx50m6r
+nodeRegistration:
+  criSocket: unix:///var/run/containerd/containerd.sock
+  imagePullPolicy: IfNotPresent
+  name: worker1
+  kubeletExtraArgs:
+    node-ip: 192.168.88.101
+
+```
+
+</p>
+</details>
+
+
