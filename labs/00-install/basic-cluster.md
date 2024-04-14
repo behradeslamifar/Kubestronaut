@@ -280,3 +280,62 @@ and change base on your requirement
 
 </p>
 
+## Initial Kubernetes Master Node without kubeadm config
+Copy this command from init command output
+
+```
+kubeadm join 192.168.88.100:6443 --token g7eyg1.6w664drzevp5n4ws \
+        --discovery-token-ca-cert-hash sha256:c2d56f6541f1ddfb7b0606d6cd058ace2cf7f8b7a0380a164d30af5e7a02b064
+```
+
+<details><summary>Expand this to see output logs</summary>
+<p>
+
+[preflight] Running pre-flight checks
+[preflight] Reading configuration from the cluster...
+[preflight] FYI: You can look at this config file with 'kubectl -n kube-system get cm kubeadm-config -o yaml'
+[kubelet-start] Writing kubelet configuration to file "/var/lib/kubelet/config.yaml"
+[kubelet-start] Writing kubelet environment file with flags to file "/var/lib/kubelet/kubeadm-flags.env"
+[kubelet-start] Starting the kubelet
+[kubelet-start] Waiting for the kubelet to perform the TLS Bootstrap...
+
+This node has joined the cluster:
+* Certificate signing request was sent to apiserver and a response was received.
+* The Kubelet was informed of the new secure connection details.
+
+Run 'kubectl get nodes' on the control-plane to see this node join the cluster.
+
+</p>
+</details>
+
+If you forgot to keep join command or its already expired, you can regenerate it
+```
+kubeadm token create --print-join-command
+```
+
+## Initial Kubernetes Master Node with kubeadm config
+```
+kubeadm config print join-defaults
+```
+
+<details><summary>Expand this to see default configuration</summary>
+<p>
+
+apiVersion: kubeadm.k8s.io/v1beta3
+caCertPath: /etc/kubernetes/pki/ca.crt
+discovery:
+  bootstrapToken:
+    apiServerEndpoint: kube-apiserver:6443
+    token: abcdef.0123456789abcdef
+    unsafeSkipCAVerification: true
+  timeout: 5m0s
+  tlsBootstrapToken: abcdef.0123456789abcdef
+kind: JoinConfiguration
+nodeRegistration:
+  criSocket: unix:///var/run/containerd/containerd.sock
+  imagePullPolicy: IfNotPresent
+  name: master1
+  taints: null
+
+</p>
+</details>

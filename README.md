@@ -17,6 +17,7 @@ These are the exam objectives you review and understand in order to pass the tes
 
 * [github.com: CNCF Exam Curriculum repository ](https://github.com/cncf/curriculum)
 * [linuxfoundation.org: CKA Home Page](https://training.linuxfoundation.org/certification/certified-kubernetes-administrator-cka/)
+* [Resources allowed during the examp](https://docs.linuxfoundation.org/tc-docs/certification/certification-resources-allowed#certified-kubernetes-administrator-cka-and-certified-kubernetes-application-developer-ckad)
 
 <details><summary>Cluster Architecture, Installation & Configuration 25%</summary>
 <p>
