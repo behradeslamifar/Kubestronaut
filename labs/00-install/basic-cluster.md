@@ -279,6 +279,7 @@ and change base on your requirement
 ```
 
 </p>
+</details>
 
 ## Initial Kubernetes Master Node without kubeadm config
 Copy this command from init command output
