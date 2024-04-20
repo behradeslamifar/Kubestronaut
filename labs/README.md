@@ -1,4 +1,6 @@
 # Kubernetes LAB
+This page is about prepare a lab for install Kuberenetes with kubeadm for CKA practice. There are other ways to setup cluster also:
+- [kind](kind.md)
 
 ## Install and Preparation
 
@@ -22,6 +24,17 @@ echo 'source <(kubectl completion bash)' >>~/.bashrc
 - In the Ubuntu VM install following application
   - [Install containerd from docker repository](https://docs.docker.com/engine/install/ubuntu/)
   - [Install kubectl, kubeadm, kubelet](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/#installing-kubeadm-kubelet-and-kubectl)
+- [Install nerdctl minimal](https://github.com/containerd/nerdctl/releases)
+- Install bash-completion
+```
+sudo apt install bash-completion
+```
+- Enable kubectl, kubeadm, nerdctl autocompletion
+```
+echo 'source <(kubectl completion bash)' >>~/.bashrc
+echo 'source <(kubeadm completion bash)' >>~/.bashrc
+echo 'source <(nerdctl completion bash)' >>~/.bashrc
+```
 - [Configure prerequisites in the VM](https://kubernetes.io/docs/setup/production-environment/container-runtimes/)
   - enable ip_forward and bridge for iptables.
 ```
@@ -46,9 +59,27 @@ sudo sysctl --system
   - Disable swap
 ```
 swapoff /path/to/swap
-sed -i 's/^\(.* swap .*\)$/#\1/' /etc/fstab
+sed -i 's/^\(.*swap.*\)$/#\1/' /etc/fstab
 ```
-  - [Configure containerd for CRI](https://github.com/containerd/containerd/blob/main/docs/cri/config.md#full-configuration)
+  - [Configure containerd for CRI](https://github.com/containerd/containerd/blob/main/docs/cri/config.md#full-configuration) (copy default configuration from this link and update with below suggestion.
+<details><summary>Update default config.toml with these</summary>
+<p>
+Add these parameters
 
-### First Master
-Clone from your VM to Install first Master with kubeadm
+```
+[grpc]
+  max_recv_message_size = 16777216
+  max_send_message_size = 16777216
+```
+
+Update this one
+```
+        SystemdCgroup = true
+```
+</p>
+</details>
+
+
+### Install Kubernetes Cluster with kubeadm
+- [Single Master](00-install/basic-cluster.md)
+- [Highly-available Cluster](00-install/ha-cluster.md)
