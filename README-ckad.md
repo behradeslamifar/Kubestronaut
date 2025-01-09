@@ -20,6 +20,7 @@ These are the exam objectives you review and understand in order to pass the tes
 <p>
 
 - [docs.docker.com: Define, build and modify container images](https://docs.docker.com/get-started/docker-concepts/building-images/understanding-image-layers/)
+  - [Best Practices](https://docs.docker.com/build/building/best-practices/)
   - [kubernetes.io: Container Runtimes](https://kubernetes.io/docs/setup/production-environment/container-runtimes/)
 - [Choose and use the right workload resource (Deployment, DaemonSet, CronJob, etc.)](https://kubernetes.io/docs/concepts/workloads/)
   - [Deployment](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/)
