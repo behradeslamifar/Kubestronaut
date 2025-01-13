@@ -43,5 +43,6 @@ RUN apt update && apt install python3 && \
 ```
 
 Build the image
-docker build 
-
+```bash
+docker build -t ubunut:custom-20250113 .
+```
