@@ -3,7 +3,7 @@
 
 _Before to start_ 
 
-Ensure you have the right version of Kubernetes documentation selected (e.g. v1.31 as of 27th November. 2024 exam) especially for API objects and annotations. This release removes several deprecated API's. 
+Ensure you have the right version of Kubernetes documentation selected (e.g. v1.31 as of 27th November. 2024 exam) especially for API objects and annotations. 
 
 ## Prepare a Lab
 - [Kubernetes LAB](labs-ckad/README.md)
