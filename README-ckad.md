@@ -48,6 +48,7 @@ These are the exam objectives you review and understand in order to pass the tes
 - [Understand Deployments and how to perform rolling updates](https://kubernetes.io/docs/tutorials/kubernetes-basics/update/update-intro/)
 - [Use the Helm package manager to deploy existing packages](https://helm.sh/docs/helm/helm_install/)
 - [Kustomize](https://kubernetes.io/docs/tasks/manage-kubernetes-objects/kustomization/)
+  - [How to Start with Kustomize](https://medium.com/@nanditasahu031/how-to-start-with-kustomize-its-features-dd541c3d2fa8)
 
 </p>
 </details>
