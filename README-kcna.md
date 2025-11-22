@@ -13,6 +13,10 @@ These are the exam objectives you review and understand in order to pass the tes
 * [github.com: CNCF Exam Curriculum repository ](https://github.com/cncf/curriculum)
 * [linuxfoundation.org: KCNA Home Page](https://training.linuxfoundation.org/certification/kubernetes-cloud-native-associate/)
 * [Resources allowed during the examp](https://docs.linuxfoundation.org/tc-docs/certification/certification-resources-allowed#certified-kubernetes-administrator-cka-and-certified-kubernetes-application-developer-ckad)
+* [KCNA Learining Path](https://training.linuxfoundation.org/wp-content/uploads/2024/10/KCNA_CurriculumPath.pdf?_gl=1*14pgxyp*_up*MQ..*_gs*MQ..&gclid=CjwKCAiA24XJBhBXEiwAXElO32oZTuTRt8ahpPOhPlX4Bs2rEPinQQxn5lLEX03nfQfuxsExs7q6hRoCrWQQAvD_BwE&gbraid=0AAAAAD2R-lqhcDAdqBsW0F9jpy8lz_DFd)
+  * [Introduction to Linux - Free](https://training.linuxfoundation.org/training/introduction-to-linux/)
+  * [Introduction to Cloud Infrastructure Technologies (LFS151) - Free](https://training.linuxfoundation.org/training/introduction-to-cloud-infrastructure-technologies/)
+  * [Introduction to Kubernetes - Free](https://training.linuxfoundation.org/training/introduction-to-kubernetes/)
 
 
 <details><summary>Kubernetes Fundamentals 44%</summary>
@@ -37,7 +41,7 @@ These are the exam objectives you review and understand in order to pass the tes
 </p>
 </details>
 
-<details><summary>Cloud Native Architecture 16%</summary>
+<details><summary>Cloud Native Architecture 12%</summary>
 <p>
 
 - [Observability]()
