@@ -23,9 +23,16 @@ These are the exam objectives you review and understand in order to pass the tes
 <p>
 
 - [Kubernetes Core Concepts]()
+  - Kubernetes components: control-plane, worker-nodes, kubelet, kubeproxy, dns
+  - workloads: Pod, Deployments, Statefulsets, Deamonsets
 - [Administration]()
+  - kubectl <patch|cordon|drain>
 - [Scheduling]()
+  - nodeselector
+  - affinity
 - [Containerization]()
+  - containerd vs Docker engine
+  - best pratices in building images
 
 </p>
 </details>
@@ -34,9 +41,13 @@ These are the exam objectives you review and understand in order to pass the tes
 <p>
 
 - [Networking]()
+  - GatewayAPI, Ingres
 - [Security]()
+  - networkpolicies, PSS/PSP, SecurityContext
 - [Troubleshooting]()
+  - kubectl <describe|logs|exec>
 - [Storage]()
+  - PV, PVC, CSI
 
 </p>
 </details>
@@ -45,6 +56,7 @@ These are the exam objectives you review and understand in order to pass the tes
 <p>
 
 - [Observability]()
+  - base knowledge about Prometheus, Opentelemetry
 - [Cloud Native Ecosystem and Principles]()
 - [Cloud Native Community and Collaboration]()
 
@@ -55,6 +67,8 @@ These are the exam objectives you review and understand in order to pass the tes
 <p>
 
 - [Application Delivery]()
+  - Helm
+  - ArgoCD
 - [Debugging]()
 
 </p>
