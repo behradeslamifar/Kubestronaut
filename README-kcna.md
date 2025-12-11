@@ -22,15 +22,18 @@ These are the exam objectives you review and understand in order to pass the tes
 <details><summary>Kubernetes Fundamentals 44%</summary>
 <p>
 
+#### Key Knowledge Areas:
 - [Kubernetes Core Concepts]()
+- [Administration]()
+- [Scheduling]()
+- [Containerization]()
+
+#### Partial list of used files, terms and utilities
   - Kubernetes components: control-plane, worker-nodes, kubelet, kubeproxy, dns
   - workloads: Pod, Deployments, Statefulsets, Deamonsets
-- [Administration]()
   - kubectl <patch|cordon|drain>
-- [Scheduling]()
   - nodeselector
   - affinity
-- [Containerization]()
   - containerd vs Docker engine
   - best pratices in building images
 
@@ -40,14 +43,17 @@ These are the exam objectives you review and understand in order to pass the tes
 <details><summary>Container Orchestration 28%</summary>
 <p>
 
+#### Key Knowledge Areas:
 - [Networking]()
-  - GatewayAPI, Ingres
 - [Security]()
-  - networkpolicies, PSS/PSP, SecurityContext
 - [Troubleshooting]()
-  - kubectl <describe|logs|exec>
 - [Storage]()
-  - PV, PVC, CSI
+
+#### Partial list of used files, terms and utilities
+- GatewayAPI, Ingres
+- networkpolicies, PSS/PSP, SecurityContext
+- kubectl <describe|logs|exec>
+- PV, PVC, CSI
 
 </p>
 </details>
@@ -55,10 +61,15 @@ These are the exam objectives you review and understand in order to pass the tes
 <details><summary>Cloud Native Architecture 12%</summary>
 <p>
 
+#### Key Knowledge Areas:
 - [Observability]()
-  - base knowledge about Prometheus, Opentelemetry
 - [Cloud Native Ecosystem and Principles]()
 - [Cloud Native Community and Collaboration]()
+
+
+#### Partial list of used files, terms and utilities
+- base knowledge about Prometheus, Opentelemetry
+- [CNCF Ambassador](https://www.cncf.io/people/ambassadors/application-process/)
 
 </p>
 </details>
@@ -66,10 +77,13 @@ These are the exam objectives you review and understand in order to pass the tes
 <details><summary>Cloud Native Application Delivery 16%</summary>
 <p>
 
+#### Key Knowledge Areas:
 - [Application Delivery]()
-  - Helm
-  - ArgoCD
 - [Debugging]()
+
+#### Partial list of used files, terms and utilities
+- Helm
+- ArgoCD
 
 </p>
 </details>
