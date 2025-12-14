@@ -3,6 +3,8 @@
 
 _Before to start_ 
 
+## Score to Pass
+**75%**
 
 ## Prepare a Lab
 - [Kubernetes LAB](labs-kcna/README.md)
@@ -17,9 +19,6 @@ These are the exam objectives you review and understand in order to pass the tes
   * [Introduction to Linux - Free](https://training.linuxfoundation.org/training/introduction-to-linux/)
   * [Introduction to Cloud Infrastructure Technologies (LFS151) - Free](https://training.linuxfoundation.org/training/introduction-to-cloud-infrastructure-technologies/)
   * [Introduction to Kubernetes - Free](https://training.linuxfoundation.org/training/introduction-to-kubernetes/)
-
-## Score to Pass
-**75%**
 
 <details><summary>Kubernetes Fundamentals 44%</summary>
 <p>
