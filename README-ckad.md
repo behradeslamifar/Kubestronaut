@@ -96,6 +96,7 @@ These are the exam objectives you review and understand in order to pass the tes
 - [Use Ingress rules to expose applications](https://kubernetes.io/docs/concepts/services-networking/ingress/)
   - [kubernetes.io: Ingress Controllers](https://kubernetes.io/docs/concepts/services-networking/ingress-controllers/)
   - [kubernates.io: Gateway API](https://kubernetes.io/docs/concepts/services-networking/gateway/)
+  - [linuxfoundation.org: Understanding Kubernetes Gateway API: A Modern Approach to Traffic Management(microcource)](https://trainingportal.linuxfoundation.org/courses/understanding-kubernetes-gateway-api-a-modern-approach-to-traffic-management)
 
 </p>
 </details>
