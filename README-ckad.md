@@ -82,6 +82,7 @@ These are the exam objectives you review and understand in order to pass the tes
 - [Create & consume Secrets](https://kubernetes.io/docs/concepts/configuration/secret/)
 - [Understand ServiceAccounts](https://kubernetes.io/docs/concepts/security/service-accounts/)
   - [kubernetes.io: Configure Service Account for Pods](https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/)
+  - [kubernetes.io: Managing Service Accounts](https://kubernetes.io/docs/reference/access-authn-authz/service-accounts-admin/)
 - [Understand Application Security (SecurityContexts, Capabilities, etc.)](https://kubernetes.io/docs/concepts/security/pod-security-standards/)
   - [kubernetes.io: Cloud Native Security and Kubernetes](https://kubernetes.io/docs/concepts/security/cloud-native-security/)
 
