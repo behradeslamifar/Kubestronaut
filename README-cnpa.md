@@ -1,13 +1,15 @@
 
 # Certified Cloud Native Platform Engineering Associate (CNPA)
+CNPA is multiple-choice exam is delivered online and consists of 60* multiple-choice questions.
+- CNPA exam consists of  85 multiple-choice questions.
+- CNPA candidates have 90* (120) minutes to complete the exam. 
 
 ## Prepare a Lab
 - [Kubernetes LAB](labs-cnpa/README.md)
 
 ## Exam Objectives
 These are the exam objectives you review and understand in order to pass the test.
-
-* [linuxfoundation.org: CNPE Home Page](https://training.linuxfoundation.org/certification/certified-cloud-native-platform-engineering-associate-cnpa/)
+- [linuxfoundation.org: CNPE Home Page](https://training.linuxfoundation.org/certification/certified-cloud-native-platform-engineering-associate-cnpa/)
 
 <details><summary>Platform Engineering Core Fundamentals 36%</summary>
 <p>
