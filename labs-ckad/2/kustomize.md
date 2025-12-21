@@ -8,6 +8,49 @@ A kustomization file contains fields falling into four categories:
 - `meta` - fields which may influence all or some of the above. Example fields: vars, namespace, apiVersion, kind, etc.
 
 
+Kustomize Pipeline Diagram by ChatGPT
+```sql
+             +-------------------------+
+             |   META (configuration)  |
+             | apiVersion, kind        |
+             | configurations, vars    |
+             | openapi, namespace      |
+             +------------+------------+
+                          |
+                          v
+        +-----------------+-------------------+
+        |       RESOURCES (input manifests)   |
+        |    - deployment.yaml                |
+        |    - service.yaml                   |
+        |    - CRDs                           |
+        +-----------------+-------------------+
+                          |
+                          v
+        +-----------------+-------------------+
+        |     GENERATORS (produce resources)  |
+        |    - configMapGenerator             |
+        |    - secretGenerator                |
+        |    - helmCharts                     |
+        |    - plugins                        |
+        +-----------------+-------------------+
+                          |
+                          v
+        +-----------------+-------------------+
+        |    TRANSFORMERS (mutate resources)  |
+        |    - labels                         |
+        |    - annotations                    |
+        |    - patches                        |
+        |    - images                         |
+        |    - replacements                   |
+        |    - namePrefix/suffix              |
+        +-----------------+-------------------+
+                          |
+                          v
+        +-----------------+-------------------+
+        |            FINAL OUTPUT YAML        |
+        +-------------------------------------+
+
+```
 
 ## Create common layout
 ```bahs
