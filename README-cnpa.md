@@ -1,73 +1,84 @@
 
-# Certified Cloud Native Platform Engineer (CNPE)
-KUBECON + CLOUDNATIVECON NORTH AMERICA, ATLANTA, Georgia – November 11, 2025 – The Cloud Native Computing Foundation® (CNCF®), which builds sustainable ecosystems for cloud native software, today announced the global availability of the Certified Cloud Native Platform Engineer (CNPE) certification—a new credential designed to validate advanced, real-world expertise in architecting and operating enterprise-scale internal developer platforms (IDPs), as the community convenes in Atlanta for KubeCon + CloudNativeCon North America 2025
-
+# Certified Cloud Native Platform Engineering Associate (CNPA)
 
 ## Prepare a Lab
-- [Kubernetes LAB](labs-cnpe/README.md)
+- [Kubernetes LAB](labs-cnpa/README.md)
 
 ## Exam Objectives
 These are the exam objectives you review and understand in order to pass the test.
 
-* [github.com: CNCF Exam Curriculum repository ](https://github.com/cncf/curriculum/blob/master/CNPE_Curriculum.pdf)
-* [linuxfoundation.org: CNPE Home Page](https://training.linuxfoundation.org/certification/certified-cloud-native-platform-engineer-cnpe/)
+* [linuxfoundation.org: CNPE Home Page](https://training.linuxfoundation.org/certification/certified-cloud-native-platform-engineering-associate-cnpa/)
 
-<details><summary>Platform Architecture and Infrastructure 15%</summary>
+<details><summary>Platform Engineering Core Fundamentals 36%</summary>
 <p>
 
-- Applying Platform Architecture Best Practices for Networking, Storage, and Compute
-- Using Cost Management Solutions for Right-Sizing and Scaling
-- Optimizing Multi-Tenancy Resource Usage
+- Declarative Resource Management
+- DevOps Practices in Platform Engineering
+- Application Environments and Infrastructure Concepts
+- Platform Architecture and Capabilities
+- Platform Engineering Goals, Objectives, and Approaches
+- Continuous Integration Fundamentals
+- Continuous Delivery and GitOps
 
 </p>
 </details>
 
-<details><summary>GitOps and Continuous Delivery 25%</summary>
+<details><summary>Platform Observability, Security, and Conformance 20%</summary>
 <p>
 
-- mplementing GitOps Workflows for Application and Infrastructure Deployment
-- Building and Configuring CI/CD Pipelines Integrated with Kubernetes
-- Deploying Applications Using Progressive Delivery Strategies (e.g., Blue/Green or Canary)
+- Observability Fundamentals: Traces, Metrics, Logs, and Events
+- Secure Service Communication
+- Policy Engines for Platform Governance
+- Kubernetes Security Essentials
+- Security in CI/CD Pipelines
 
 </p>
 </details>
 
-<details><summary>Platform APIs and Self-Service Capabilities 25%</summary>
+<details><summary>Continuous Delivery & Platform Engineering 16%</summary>
 <p>
 
-- Designing and Creating Custom Resource Definitions (CRDs) for Platform Services
-- Implementing Workflows for Self-Service Provisioning Using Platform APIs
-- Using Kubernetes Operators for Platform Automation and Integration
-- Using Automation Frameworks for Self-Service Provisioning
+- Continuous Integration Pipelines Overview
+- Incident Response in Platform Engineering
+- CI/CD Relationship Fundamentals
+- GitOps Basics and Workflows
+- GitOps for Application Environments
 
 </p>
 </details>
 
-<details><summary>Observability and Operations 20%</summary>
+<details><summary>Platform APIs and Provisioning Infrastructure 12%</summary>
 <p>
 
-- Implementing Monitoring, Alerting, Logging, and Tracing Solutions
-- Measuring and Improving Platform Efficiency Using Deployment Metrics and Performance Indicators
-- Diagnosing and Remediating Platform Issue and Incident Scenarios
+- Kubernetes Reconciliation Loop
+- APIs for Self-Service Platforms (CRDs)
+- Infrastructure Provisioning with Kubernetes
+- Kubernetes Operator Pattern for Integration
 
 </p>
 </details>
 
-<details><summary>Security and Policy Enforcement 15%</summary>
+<details><summary>IDPs and Developer Experience 8%</summary>
 <p>
 
-- Configuring Secure Service-to-Service Communication
-- Applying RBAC and Security Controls Across Platform Resources
-- Generating Audit Trails and Enforcing Policy Compliance (SBOM, Compliance Reports, etc.)
-- Using Policy Engines and Admission Controllers for Governance
-- Integrating Security Scanning and Compliance Checks into Deployment Pipelines
+- Simplified Access to Platform Capabilities
+- API-Driven Service Catalogs
+- Developer Portals for Platform Adoption
+- AI/ML in Platform Automation
+
+</p>
+</details>
+
+<details><summary>Measuring your Platform 8%</summary>
+<p>
+
+- Platform Efficiency and Team Productivity
+- DORA Metrics for Platform Initiatives
 
 </p>
 </details>
 
 ## Practice Exam
-- [killer.sh: ckad](https://killer.sh/ckad)
-- [learning.oreilly.com: Labs](https://learning.oreilly.com/playlists/2e9fe6dc-2a05-47fe-ae0a-34d6485287cc/)
 
 ## Resource
 - [mediom.com: How I pass the CNPE exam](https://medium.com/@michatomczak_38795/how-i-passed-the-cloud-native-platform-engineer-cnpe-exam-and-what-you-can-learn-from-my-attempt-69f30f3d1458)
