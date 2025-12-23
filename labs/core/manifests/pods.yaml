@@ -23,6 +23,7 @@ metadata:
     role: front
     app: nginx
 spec:
+  automountServiceAccountToken: false
   containers:
     - name: web
       image: nginx

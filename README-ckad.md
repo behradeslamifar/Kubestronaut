@@ -48,6 +48,7 @@ These are the exam objectives you review and understand in order to pass the tes
 - [Understand Deployments and how to perform rolling updates](https://kubernetes.io/docs/tutorials/kubernetes-basics/update/update-intro/)
 - [Use the Helm package manager to deploy existing packages](https://helm.sh/docs/helm/helm_install/)
 - [Kustomize](https://kubernetes.io/docs/tasks/manage-kubernetes-objects/kustomization/)
+  - [Kustomize Documentation](https://kubectl.docs.kubernetes.io/references/kustomize/builtins/)
   - [How to Start with Kustomize](https://medium.com/@nanditasahu031/how-to-start-with-kustomize-its-features-dd541c3d2fa8)
 
 </p>
@@ -82,6 +83,7 @@ These are the exam objectives you review and understand in order to pass the tes
 - [Create & consume Secrets](https://kubernetes.io/docs/concepts/configuration/secret/)
 - [Understand ServiceAccounts](https://kubernetes.io/docs/concepts/security/service-accounts/)
   - [kubernetes.io: Configure Service Account for Pods](https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/)
+  - [kubernetes.io: Managing Service Accounts](https://kubernetes.io/docs/reference/access-authn-authz/service-accounts-admin/)
 - [Understand Application Security (SecurityContexts, Capabilities, etc.)](https://kubernetes.io/docs/concepts/security/pod-security-standards/)
   - [kubernetes.io: Cloud Native Security and Kubernetes](https://kubernetes.io/docs/concepts/security/cloud-native-security/)
 
@@ -96,6 +98,7 @@ These are the exam objectives you review and understand in order to pass the tes
 - [Use Ingress rules to expose applications](https://kubernetes.io/docs/concepts/services-networking/ingress/)
   - [kubernetes.io: Ingress Controllers](https://kubernetes.io/docs/concepts/services-networking/ingress-controllers/)
   - [kubernates.io: Gateway API](https://kubernetes.io/docs/concepts/services-networking/gateway/)
+  - [linuxfoundation.org: Understanding Kubernetes Gateway API: A Modern Approach to Traffic Management(microcource)](https://trainingportal.linuxfoundation.org/courses/understanding-kubernetes-gateway-api-a-modern-approach-to-traffic-management)
 
 </p>
 </details>
