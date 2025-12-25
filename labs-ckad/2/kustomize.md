@@ -334,8 +334,14 @@ patchesJson6902:
       version: v1
       kind: Deployment
       name: api
-    path: patches/json/change-command.json
+    path: patches/replicas.yaml
 
+replicas.yaml
+```
+  - op: replace # override the replicas default value
+    path: /spec/replicas
+    value: 3
+```
 
 # --------------------------------------------------------------
 # 7. REPLACEMENTS — modern variable injection
