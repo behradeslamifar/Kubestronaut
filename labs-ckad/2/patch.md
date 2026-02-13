@@ -78,3 +78,7 @@ spec:
 ```bash
 kubectl patch deployment nginx-deployment --patch-file patch-file.yaml
 ```
+
+## Resources
+- [Kubernetes Patch Strategies](https://github.com/nubank/k8s-api/blob/master/doc/kubernetes-patch-strategies.md)
+- [Update API Object kubectl patch](https://kubernetes.io/docs/tasks/manage-kubernetes-objects/update-api-object-kubectl-patch/)
