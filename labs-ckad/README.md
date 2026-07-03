@@ -1,4 +1,16 @@
 # CKAD Labs
+Which topics you should practice to pass CKAD exam?
+
+- Tearafik - defining and troubleshooting ingress
+- RBAC - Defining Role and Rolebinding and Serviceacout and troubleshoot access issue
+- Deployment strategy - Rollout, resume deployment
+- Update deployment without deleteing or restarting the pod
+- Network Policy - default rule, restricting access to specific pod
+- securityContext and Capabilities
+- Canary deployment
+- Job, Cronjob - How to create Cronjob wihtout document with kubectl and run test job
+
+Qeustions is easy but time consuming. If you are not handson you will lost to time. Searching in Documents also time consuming and you cant use it always. Practice with kubectl to be fast for configuration and troubleshooting.
 
 ## Prepare for Lab
 - [Install kind](https://kind.sigs.k8s.io/docs/user/quick-start/)
