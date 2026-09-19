@@ -73,7 +73,8 @@ These are the exam objectives you review and understand in order to pass the tes
 <p>
 
 - [Understand connectivity between Pods](https://kubernetes.io/docs/concepts/workloads/pods/#pod-networking)
-- [Define and enforce Network Policies]()
+  - [Networking](https://kubernetes.io/docs/concepts/cluster-administration/networking/)
+- [Define and enforce Network Policies](https://kubernetes.io/docs/concepts/services-networking/network-policies/)
 - [Use ClusterIP, NodePort, LoadBalancer service types and endpoints]()
 - [Use the Gateway API to manage Ingress traffic]()
 - [Know how to use Ingress controllers and Ingress resources]()
