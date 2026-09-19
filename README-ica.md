@@ -411,72 +411,62 @@ These are the exam objectives you review and understand in order to pass the tes
 * [linuxfoundation.org: ICA Home Page](https://training.linuxfoundation.org/certification/istio-certified-associate-ica/)
 * [Resources allowed during the examp](https://docs.linuxfoundation.org/tc-docs/certification/certification-resources-allowed#istio-certified-associate-ica)
 
-<details><summary>Istio Installation, Upgrade & Configuration 7%</summary>
+<details><summary>Installation, Upgrade & Configuration 20%</summary>
 <p>
 
-- [Using the Istio CLI to install a basic cluster](https://istio.io/latest/docs/setup/install/istioctl/)
+- [Installing Istio with istioctl or Helm]()
+  - [Using the Istio CLI to install a basic cluster](https://istio.io/latest/docs/setup/install/istioctl/)
   - [youtube.com: Mesh Week (Session 1)](https://www.youtube.com/watch?v=w_8Gg_jsAbU)
   - [istio.io: Installation Configuration Profiles](https://istio.io/latest/docs/setup/additional-setup/config-profiles/)
   - [istio.io: Introducing istiod: simplifying the control plane](https://istio.io/v1.16/blog/2020/istiod/)
-- [Customizing the Istio installation with the IstioOperator API](https://istio.io/latest/docs/reference/config/istio.operator.v1alpha1/)
-- [Using overlays to manage Istio component settings](https://istio.io/latest/docs/setup/additional-setup/customize-installation/#identify-an-istio-component)
+- [Installing Istio in Sidecar or Ambient Mode]()
+- [Customizing your Istio Installation](https://istio.io/latest/docs/reference/config/istio.operator.v1alpha1/)
+  - [istio.io: Customize Installation](https://istio.io/latest/docs/setup/additional-setup/customize-installation/)
+- [Upgrading Istio (Canary, In-Place)]()
+
 
 </p>
 </details>
 
-<details><summary>Traffic Management 40%</summary>
+<details><summary>Traffic Management 35%</summary>
 <p>
 
-- [Controlling network traffic flows within a service mesh](https://istio.io/latest/docs/tasks/traffic-management/request-routing/)
+- [Configuring Ingress and Egress Traffic]()
   - [youtube.com: Mesh Week (Session 2)](https://www.youtube.com/watch?v=Q-l1z3ejc8Q)
-  - [solo.io: Istio Networking in Depth](https://www.solo.io/blog/istios-networking-in-depth/)
-  - [istio.io: Traffic Shifting](https://istio.io/latest/docs/tasks/traffic-management/traffic-shifting/)
-- [Configuring sidecar injection](https://istio.io/latest/docs/setup/additional-setup/sidecar-injection/)
-- [Using the Gateway resource to configure ingress and egress traffic](https://istio.io/latest/docs/reference/config/networking/gateway/)
   - [istio.io: Egress Gateway](https://istio.io/latest/docs/tasks/traffic-management/egress/egress-gateway/)
   - [istio.io: Virtualservice](https://istio.io/latest/docs/reference/config/networking/virtual-service/)
-- [Understanding how to use ServiceEntry resources for adding entries to internal service registry](https://istio.io/latest/docs/reference/config/networking/service-entry/)
-  - [solo.io: Istio multi-cluster traffic](https://www.solo.io/blog/istio-multi-cluster-traffic-debugging/)
-- [Define traffic policies using DestinationRule](https://istio.io/latest/docs/reference/config/networking/destination-rule/)
-- [Configure traffic mirroring capabilities](https://istio.io/latest/docs/tasks/traffic-management/mirroring/)
-  - [envoyproxy.io: HTTP route components](https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/route/v3/route_components.proto#config-route-v3-routeaction-requestmirrorpolicy)
-
-</p>
-</details>
-
-<details><summary>Resilience and Fault Injection 20%</summary>
-<p>
-
-- [Configuring circuit breakers (with or without outlier detection)](https://istio.io/latest/docs/tasks/traffic-management/circuit-breaking/)
-- [Using resilience features](https://istio.io/latest/docs/concepts/traffic-management/#network-resilience-and-testing)
-- [Creating fault injection](https://istio.io/latest/docs/tasks/traffic-management/fault-injection/)
+- [Configuring Routing within a Service Mesh]()
+  - [solo.io: Istio Networking in Depth](https://www.solo.io/blog/istios-networking-in-depth/)
+- [Defining Traffic Policies with Destination Rules]()
+- [Configuring Traffic Shifting]()
+  - [istio.io: Traffic Shifting](https://istio.io/latest/docs/tasks/traffic-management/traffic-shifting/)
+- [Connecting In-Mesh Workloads to External Workloads and Services]()
+- [Using Resilience Features (circuit breaking, failover, outlier detection, timeouts, retries)](https://istio.io/latest/docs/concepts/traffic-management/#network-resilience-and-testing)
+  - [istio.io: Circuit Breaking](https://istio.io/latest/docs/tasks/traffic-management/circuit-breaking/)
+- [Using Fault Injection](https://istio.io/latest/docs/tasks/traffic-management/fault-injection/)
   - [istio.io: Fault injection](https://istio.io/latest/docs/concepts/traffic-management/#fault-injection)
   - [istio.io: Commands](https://istio.io/latest/docs/reference/commands/pilot-agent/)
 
 </p>
 </details>
 
-<details><summary>Securing Workloads 20%</summary>
+<details><summary>Securing Workloads 25%</summary>
 <p>
 
-- [Understand Istio security features](https://istio.io/latest/docs/concepts/security/)
+- [Configuring Authorization]()
   - [youtube.com: Mesh Week (Session 4)](https://www.youtube.com/watch?v=uO-X1U1l23I)
-- [Set up Istio authorization for HTTP/TCP traffic in the mesh](https://istio.io/latest/docs/reference/config/security/authorization-policy/)
-  - [istio.io: HTTP Traffic (task for authorization policy)](https://istio.io/latest/docs/tasks/security/authorization/authz-http/)
-- [Configure mutual TLS at mesh, namespace, and workload levels](https://istio.io/latest/docs/ops/configuration/traffic-management/tls-configuration/)
-  - [istio.io: Mutual TLS Migration (task)](https://istio.io/latest/docs/tasks/security/authentication/mtls-migration/)
+- [Configuring Authentication (mTLS, JWT)]()
+- [Securing Edge Traffic with TLS]()
 
 </p>
 </details>
 
-<details><summary>Advanced Scenarios 13%</summary>
+<details><summary>Troubleshooting 20%</summary>
 <p>
 
-- [Understand how to onboard non-Kubernetes workloads to the mesh](https://istio.io/latest/docs/setup/install/virtual-machine/)
-  - [istio.io: Virtual Machine Artichitecture](https://istio.io/latest/docs/ops/deployment/vm-architecture/)
-  - [istio.io: Bookinfo with a Virtual Machine (example)](https://istio.io/latest/docs/examples/virtual-machines/)
-  - [youtube.com: Mesh Week (Session 5)](https://www.youtube.com/watch?v=Od7L-3tE9oA)
-- [Troubleshoot configuration issues](https://istio.io/latest/docs/ops/common-problems/)
+- [Troubleshooting Configuration](https://istio.io/latest/docs/ops/common-problems/)
+- [Troubleshooting the Mesh Control Plane]()
+- [Troubleshooting the Mesh Data Plane]()
 
 </p>
 </details>
