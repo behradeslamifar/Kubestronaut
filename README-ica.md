@@ -6,6 +6,21 @@ Istio is Greek for **Sail**, an open source implementation of a service mesh fou
 - [istio.io: Concepts Documents](https://istio.io/latest/docs/concepts/)
 
 ### Istio Anatomy
+#### Components
+
+| Core components        | Sidecar Mode | Ambient Mode |
+|------------------------|:------------:|:------------:|
+| `istio-egressgateway`  |              |              |
+| `istio-ingressgateway` |      ✓       |              |
+| `istiod`               |      ✓       |       ✓      |
+| `CNI`                  |              |       ✓      |
+| `Ztunnel`              |              |       ✓      |
+
+| Components        | Sidecar Mode | Ambient Mode |
+|-------------------|:------------:|:------------:|
+| `pilot`           |              |              |
+| `istiodRemote`    |              |              |
+
 Virtual service and Destination rule 
 Gateway tomanage inbount and outbout traffic
 
@@ -384,13 +399,7 @@ spec:
 </p>
 </details>
 
-<details><summary>sa</summary>
-<p>
-
-</p>
-</details>
-
-<details><summary>sa</summary>
+<details><summary>Todo</summary>
 <p>
 
 </p>
@@ -416,7 +425,6 @@ These are the exam objectives you review and understand in order to pass the tes
 
 - [Installing Istio with istioctl or Helm]()
   - [Using the Istio CLI to install a basic cluster](https://istio.io/latest/docs/setup/install/istioctl/)
-  - [istio.io: IstioOperator Options](https://istio.io/latest/docs/reference/config/istio.operator.v1alpha1/)
   - [youtube.com: Mesh Week (Session 1)- old but usefull](https://www.youtube.com/watch?v=w_8Gg_jsAbU)
   - [istio.io: Installation Configuration Profiles](https://istio.io/latest/docs/setup/additional-setup/config-profiles/)
   - [istio.io: Introducing istiod: simplifying the control plane](https://istio.io/v1.16/blog/2020/istiod/)
@@ -434,14 +442,14 @@ These are the exam objectives you review and understand in order to pass the tes
 - [Customizing your Istio Installation](https://istio.io/latest/docs/reference/config/istio.operator.v1alpha1/)
   - [istio.io: Customize Installation](https://istio.io/latest/docs/setup/additional-setup/customize-installation/)
 
-| IstioOperator Defined Components |
-|----------------------------------|
-| `base`                           |
-| `pilot`                          |
-| `ingressGateways`                |
-| `egressGateways`                 |
-| `cni`                            |
-| `istiodRemote`                   |
+| IstioOperator Defined Components | Description |
+|----------------------------------|:-----------:|
+| `base`                           | |
+| `pilot`                          | |
+| `ingressGateways`                | |
+| `egressGateways`                 | |
+| `cni`                            | |
+| `istiodRemote`                   | |
 
 - [Upgrading Istio (Canary, In-Place)- Sidecar Mode](https://istio.io/latest/docs/setup/upgrade/)
   - [Upgrade Istio - Ambient Mode](https://istio.io/latest/docs/ambient/upgrade/)
@@ -453,9 +461,8 @@ These are the exam objectives you review and understand in order to pass the tes
 <details><summary>Traffic Management 35%</summary>
 <p>
 
-- [Configuring Ingress and Egress Traffic]()
+- Configuring Ingress and Egress Traffic - [Ingress](https://istio.io/latest/docs/tasks/traffic-management/ingress/) and [Egress](https://istio.io/latest/docs/tasks/traffic-management/egress/)
   - [youtube.com: Mesh Week (Session 2)](https://www.youtube.com/watch?v=Q-l1z3ejc8Q)
-  - [istio.io: Egress Gateway](https://istio.io/latest/docs/tasks/traffic-management/egress/egress-gateway/)
   - [istio.io: Virtualservice](https://istio.io/latest/docs/reference/config/networking/virtual-service/)
 - [Configuring Routing within a Service Mesh]()
   - [solo.io: Istio Networking in Depth](https://www.solo.io/blog/istios-networking-in-depth/)
