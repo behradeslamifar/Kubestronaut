@@ -433,6 +433,7 @@ These are the exam objectives you review and understand in order to pass the tes
   - [oreilly.com: Sidecar-less Istio Expained](https://learning.oreilly.com/library/view/sidecar-less-istio-explained/9781098178055/)
 - [Customizing your Istio Installation](https://istio.io/latest/docs/reference/config/istio.operator.v1alpha1/)
   - [istio.io: Customize Installation](https://istio.io/latest/docs/setup/additional-setup/customize-installation/)
+
 | IstioOperator Defined Components |
 |----------------------------------|
 | `base`                           |
