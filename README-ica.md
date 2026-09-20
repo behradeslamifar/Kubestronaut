@@ -429,10 +429,21 @@ These are the exam objectives you review and understand in order to pass the tes
 | `CNI`                  |         |      |         |        |       |         |    ✓    |
 | `Ztunnel`              |         |      |         |        |       |         |    ✓    |
 
-- [Installing Istio in Sidecar or Ambient Mode]()
+- [Installing Istio in Sidecar or Ambient Mode](https://istio.io/latest/docs/overview/dataplane-modes/)
+  - [oreilly.com: Sidecar-less Istio Expained](https://learning.oreilly.com/library/view/sidecar-less-istio-explained/9781098178055/)
 - [Customizing your Istio Installation](https://istio.io/latest/docs/reference/config/istio.operator.v1alpha1/)
   - [istio.io: Customize Installation](https://istio.io/latest/docs/setup/additional-setup/customize-installation/)
-- [Upgrading Istio (Canary, In-Place)]()
+| IstioOperator Defined Components |
+|----------------------------------|
+| `base`                           |
+| `pilot`                          |
+| `ingressGateways`                |
+| `egressGateways`                 |
+| `cni`                            |
+| `istiodRemote`                   |
+
+- [Upgrading Istio (Canary, In-Place)- Sidecar Mode](https://istio.io/latest/docs/setup/upgrade/)
+  - [Upgrade Istio - Ambient Mode](https://istio.io/latest/docs/ambient/upgrade/)
 
 
 </p>
