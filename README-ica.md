@@ -416,9 +416,19 @@ These are the exam objectives you review and understand in order to pass the tes
 
 - [Installing Istio with istioctl or Helm]()
   - [Using the Istio CLI to install a basic cluster](https://istio.io/latest/docs/setup/install/istioctl/)
-  - [youtube.com: Mesh Week (Session 1)](https://www.youtube.com/watch?v=w_8Gg_jsAbU)
+  - [istio.io: IstioOperator Options](https://istio.io/latest/docs/reference/config/istio.operator.v1alpha1/)
+  - [youtube.com: Mesh Week (Session 1)- old but usefull](https://www.youtube.com/watch?v=w_8Gg_jsAbU)
   - [istio.io: Installation Configuration Profiles](https://istio.io/latest/docs/setup/additional-setup/config-profiles/)
   - [istio.io: Introducing istiod: simplifying the control plane](https://istio.io/v1.16/blog/2020/istiod/)
+
+| Core components        | default | demo | minimal | remote | empty | preview | ambient |
+|------------------------|:-------:|:----:|:-------:|:------:|:-----:|:-------:|:-------:|
+| `istio-egressgateway`  |         |  ✓   |         |        |       |         |         |
+| `istio-ingressgateway` |    ✓    |  ✓   |         |        |       |    ✓    |         |
+| `istiod`               |    ✓    |  ✓   |    ✓    |        |       |    ✓    |    ✓    |
+| `CNI`                  |         |      |         |        |       |         |    ✓    |
+| `Ztunnel`              |         |      |         |        |       |         |    ✓    |
+
 - [Installing Istio in Sidecar or Ambient Mode]()
 - [Customizing your Istio Installation](https://istio.io/latest/docs/reference/config/istio.operator.v1alpha1/)
   - [istio.io: Customize Installation](https://istio.io/latest/docs/setup/additional-setup/customize-installation/)
