@@ -8,21 +8,38 @@ Istio is Greek for **Sail**, an open source implementation of a service mesh fou
 ### Istio Anatomy
 #### Components
 
-| Core components        | Sidecar Mode | Ambient Mode |
-|------------------------|:------------:|:------------:|
-| `istio-egressgateway`  |              |              |
-| `istio-ingressgateway` |      ✓       |              |
-| `istiod`               |      ✓       |       ✓      |
-| `CNI`                  |              |       ✓      |
-| `Ztunnel`              |              |       ✓      |
+| Core components        | Sidecar Mode | Ambient Mode |                |
+|------------------------|:------------:|:------------:|:--------------:|
+| `istiod`               |      ✓       |       ✓      |  Control-Plan  |
+| `istio-egressgateway`  |              |              |   Data-Plain   |
+| `istio-ingressgateway` |      ✓       |              |   Data-Plain   |
+| `Envoy sidecar`        |      ✓       |              |   Data-Plain   |
+| `CNI`                  |              |       ✓      |   Data-Plain   |
+| `Ztunnel`              |              |       ✓      |   Data-Plain   |
+| `waypoint`             |              |       ✓      |   Data-Plain   |
 
-| Components        | Sidecar Mode | Ambient Mode |
-|-------------------|:------------:|:------------:|
-| `pilot`           |              |              |
-| `istiodRemote`    |              |              |
 
-Virtual service and Destination rule 
-Gateway tomanage inbount and outbout traffic
+<details><summary>Istio Resources</summary>
+<p>
+
+- [VirtualService](https://istio.io/latest/docs/reference/config/networking/virtual-service/)
+- [DestinationRule](https://istio.io/latest/docs/reference/config/networking/destination-rule/)
+- [Gateway](https://istio.io/latest/docs/reference/config/networking/gateway/)
+- [ServiceEntry](https://istio.io/latest/docs/reference/config/networking/service-entry/)
+- [Sidecar](https://istio.io/latest/docs/reference/config/networking/sidecar/)
+- [WorkloadEntry](https://istio.io/latest/docs/reference/config/networking/workload-entry/)
+  - [istio blog: Introducing Workload Entries]( https://istio.io/latest/blog/2020/workload-entry/)
+- [WorkloadGroup](https://istio.io/latest/docs/reference/config/networking/workload-group/)
+- [ProxyConfig](https://istio.io/latest/docs/reference/config/networking/proxy-config/)
+- [EnvoyFilter](https://istio.io/latest/docs/reference/config/networking/envoy-filter/)
+- [AuthorizationPolicy](https://istio.io/latest/docs/reference/config/security/authorization-policy/)
+- [PeerAuthentication](https://istio.io/latest/docs/reference/config/security/peer_authentication/)
+- [RequestAuthentication](https://istio.io/latest/docs/reference/config/security/request_authentication/)
+- [Telemetry](https://istio.io/latest/docs/reference/config/telemetry/)
+- [WasmPlugin](https://istio.io/latest/docs/reference/config/proxy_extensions/wasm-plugin/)
+
+</p>
+</details>
 
 #### Istio Objects Examples
 <details><summary>Traffic Management</summary>
