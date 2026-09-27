@@ -480,9 +480,8 @@ These are the exam objectives you review and understand in order to pass the tes
 
 - Configuring Ingress and Egress Traffic - [Ingress](https://istio.io/latest/docs/tasks/traffic-management/ingress/) and [Egress](https://istio.io/latest/docs/tasks/traffic-management/egress/)
   - [youtube.com: Mesh Week (Session 2)](https://www.youtube.com/watch?v=Q-l1z3ejc8Q)
+- [Configuring Routing within a Service Mesh](https://istio.io/latest/docs/tasks/traffic-management/request-routing/)
   - [istio.io: Virtualservice](https://istio.io/latest/docs/reference/config/networking/virtual-service/)
-- [Configuring Routing within a Service Mesh]()
-  - [solo.io: Istio Networking in Depth](https://www.solo.io/blog/istios-networking-in-depth/)
 - [Defining Traffic Policies with Destination Rules]()
 - [Configuring Traffic Shifting]()
   - [istio.io: Traffic Shifting](https://istio.io/latest/docs/tasks/traffic-management/traffic-shifting/)
@@ -499,9 +498,9 @@ These are the exam objectives you review and understand in order to pass the tes
 <details><summary>Securing Workloads 25%</summary>
 <p>
 
-- [Configuring Authorization]()
+- [Configuring Authorization](https://istio.io/latest/docs/tasks/security/authorization/)
   - [youtube.com: Mesh Week (Session 4)](https://www.youtube.com/watch?v=uO-X1U1l23I)
-- [Configuring Authentication (mTLS, JWT)]()
+- [Configuring Authentication (mTLS, JWT)](https://istio.io/latest/docs/tasks/security/authentication/)
 - [Securing Edge Traffic with TLS]()
 
 </p>
@@ -511,8 +510,8 @@ These are the exam objectives you review and understand in order to pass the tes
 <p>
 
 - [Troubleshooting Configuration](https://istio.io/latest/docs/ops/common-problems/)
-- [Troubleshooting the Mesh Control Plane]()
-- [Troubleshooting the Mesh Data Plane]()
+- [Troubleshooting the Mesh Control Plane](https://istio.io/latest/docs/ops/diagnostic-tools/)
+- [Troubleshooting the Mesh Data Plane](https://istio.io/latest/docs/ops/diagnostic-tools/)
 
 </p>
 </details>
@@ -528,3 +527,4 @@ These are the exam objectives you review and understand in order to pass the tes
 - [Istio in Action](https://www.manning.com/books/istio-in-action)
 - [Istio Up and Running](https://www.oreilly.com/library/view/istio-up-and/9781492043775/)
 - [Bootstrapping Service Mesh Implementations with Istio](https://www.packtpub.com/product/bootstrapping-service-mesh-implementations-with-istio/9781803246819) (I dont recommend this book, not organize well)
+
