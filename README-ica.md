@@ -426,7 +426,7 @@ spec:
 </details>
 
 ## Prepare a Lab
-- [Istio Lab](labs/README.md)
+- [Istio Lab](labs-ica/README.md)
 - [killercoda.com: Scenario for the ICA](https://killercoda.com/ica)
 
 ## Exam Objectives
@@ -482,10 +482,13 @@ These are the exam objectives you review and understand in order to pass the tes
   - [youtube.com: Mesh Week (Session 2)](https://www.youtube.com/watch?v=Q-l1z3ejc8Q)
 - [Configuring Routing within a Service Mesh](https://istio.io/latest/docs/tasks/traffic-management/request-routing/)
   - [istio.io: Virtualservice](https://istio.io/latest/docs/reference/config/networking/virtual-service/)
-- [Defining Traffic Policies with Destination Rules]()
-- [Configuring Traffic Shifting]()
-  - [istio.io: Traffic Shifting](https://istio.io/latest/docs/tasks/traffic-management/traffic-shifting/)
-- [Connecting In-Mesh Workloads to External Workloads and Services]()
+- [Defining Traffic Policies with Destination Rules](https://istio.io/latest/docs/reference/config/networking/destination-rule/)
+  - [istio.io: How subset is working?](https://istio.io/latest/docs/ops/best-practices/traffic-management/)
+- [Configuring Traffic Shifting](https://istio.io/latest/docs/tasks/traffic-management/traffic-shifting/)
+  - [blog.istio.io: Canary Deployments using Istio](https://istio.io/latest/blog/2017/0.1-canary/)
+- [Connecting In-Mesh Workloads to External Workloads and Services](https://istio.io/latest/docs/tasks/traffic-management/egress/egress-control/)
+  - [istio.io: ServiceEntry](https://istio.io/latest/docs/reference/config/networking/service-entry/)
+  - [blog.istio.io: WorkloadEntry](https://istio.io/latest/blog/2020/workload-entry/)
 - [Using Resilience Features (circuit breaking, failover, outlier detection, timeouts, retries)](https://istio.io/latest/docs/concepts/traffic-management/#network-resilience-and-testing)
   - [istio.io: Circuit Breaking](https://istio.io/latest/docs/tasks/traffic-management/circuit-breaking/)
 - [Using Fault Injection](https://istio.io/latest/docs/tasks/traffic-management/fault-injection/)
@@ -517,6 +520,8 @@ These are the exam objectives you review and understand in order to pass the tes
 </details>
 
 ## Other resources
+- [Introduction to Istio (LFS144)](https://trainingportal.linuxfoundation.org/courses/introduction-to-istio-lfs144)
+- [linuxfoundation.org: Istio Service Mesh Essentials (LFS245)](https://trainingportal.linuxfoundation.org/courses/istio-service-mesh-essentials-lfs245)
 - [academy.solo.io: ServiceMesh and CNI  free courses](https://academy.solo.io/learn)
 - [academy.tetrate.io: ServiceMesh free cources](https://academy.tetrate.io/collections)
 - [github.com: Mesh Week Videos](https://github.com/solo-io/mesh-week)
