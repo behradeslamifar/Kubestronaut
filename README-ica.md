@@ -502,9 +502,11 @@ These are the exam objectives you review and understand in order to pass the tes
 <p>
 
 - [Configuring Authorization](https://istio.io/latest/docs/tasks/security/authorization/)
+  - [istio.io: Authorization Concept](https://istio.io/latest/docs/concepts/security/#authorization) - Read this first
   - [youtube.com: Mesh Week (Session 4)](https://www.youtube.com/watch?v=uO-X1U1l23I)
 - [Configuring Authentication (mTLS, JWT)](https://istio.io/latest/docs/tasks/security/authentication/)
-- [Securing Edge Traffic with TLS]()
+- [Securing Edge Traffic with TLS](https://istio.io/latest/docs/tasks/traffic-management/ingress/secure-ingress/)
+  - [istio.io: Understanidng TLS Configuration](https://istio.io/latest/docs/ops/configuration/traffic-management/tls-configuration/)
 
 </p>
 </details>
@@ -525,7 +527,6 @@ These are the exam objectives you review and understand in order to pass the tes
 - [academy.solo.io: ServiceMesh and CNI  free courses](https://academy.solo.io/learn)
 - [academy.tetrate.io: ServiceMesh free cources](https://academy.tetrate.io/collections)
 - [github.com: Mesh Week Videos](https://github.com/solo-io/mesh-week)
-- [github.com: Blog posts about ICA](https://github.com/yuyatinnefeld/istio?tab=readme-ov-file)
 - [docs.google.com: Mock Istio Examp - Mesh Week](https://docs.google.com/forms/d/e/1FAIpQLSfD4BLLQfdUwnIyiTBSGC_OzmSbiyrIlNp5Am61fTOhRbfiLw/viewform)
 
 ## Books
