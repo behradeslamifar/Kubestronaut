@@ -514,7 +514,8 @@ These are the exam objectives you review and understand in order to pass the tes
 <details><summary>Troubleshooting 20%</summary>
 <p>
 
-- [Troubleshooting Configuration](https://istio.io/latest/docs/ops/common-problems/)
+- [Troubleshooting Configuration](https://istio.io/latest/docs/ops/common-problems/validation/)
+  - [istio.io: Common Problems](https://istio.io/latest/docs/ops/common-problems/)
 - [Troubleshooting the Mesh Control Plane](https://istio.io/latest/docs/ops/diagnostic-tools/)
 - [Troubleshooting the Mesh Data Plane](https://istio.io/latest/docs/ops/diagnostic-tools/)
 
