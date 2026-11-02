@@ -45,11 +45,13 @@ These are the exam objectives you review and understand in order to pass the tes
 <details><summary>Workloads & Scheduling 15%</summary>
 <p>
 
-- [Understand application deployments and how to perform rolling update and rollbacks]()
-- [Use ConfigMaps and Secrets to configure applications]()
-- [Configure workload autoscaling]()
-- [Understand the primitives used to create robust, self-healing, application deployments]()
-- [Configure Pod admission and scheduling (limits, node affinity, etc.)]()
+- [Understand application deployments and how to perform rolling update and rollbacks](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/)
+- [Use ConfigMaps and Secrets to configure applications](https://kubernetes.io/docs/concepts/configuration/)
+- [Configure workload autoscaling](https://kubernetes.io/docs/concepts/workloads/autoscaling/)
+  - [kubernetes.io: HPA Walkthrough](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale-walkthrough/)
+- [Understand the primitives used to create robust, self-healing, application deployments](https://kubernetes.io/docs/concepts/architecture/self-healing/)
+- Configure Pod admission and scheduling (limits, [node affinity](https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/), etc.)
+  - [Taints and Tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/)
 
 </p>
 </details>
@@ -76,8 +78,10 @@ These are the exam objectives you review and understand in order to pass the tes
   - [Networking](https://kubernetes.io/docs/concepts/cluster-administration/networking/)
 - [Define and enforce Network Policies](https://kubernetes.io/docs/concepts/services-networking/network-policies/)
 - [Use ClusterIP, NodePort, LoadBalancer service types and endpoints]()
-- [Use the Gateway API to manage Ingress traffic]()
-- [Know how to use Ingress controllers and Ingress resources]()
+- [Use the Gateway API to manage Ingress traffic](https://kubernetes.io/docs/concepts/services-networking/gateway/)
+  - [Migrating from Ingress](https://gateway-api.sigs.k8s.io/guides/getting-started/migrating-from-ingress/)
+  - [linuxfoundation.org: Understanding Kubernetes Gateway API: A Modern Approach to Traffic Management Microcourse](https://trainingportal.linuxfoundation.org/courses/understanding-kubernetes-gateway-api-a-modern-approach-to-traffic-management)
+- [Know how to use Ingress controllers and Ingress resources](https://kubernetes.io/docs/concepts/services-networking/ingress/)
 - [Understand and use CoreDNS]()
 
 </p>
