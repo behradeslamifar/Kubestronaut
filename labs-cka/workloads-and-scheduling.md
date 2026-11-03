@@ -112,7 +112,7 @@ k autoscale deployment nginx-test --min=2 --max=10 --cpu-percent=80
 ```
 
 ## Configure Pod admission and scheduling (limits, node affinity, etc.)
-Taint and Toleration
+### Taint and Toleration
 ```bash
 # Taint a node (effect: NoSchedule, NoExecute, PreferNoSchedule)
 kubectl taint nodes node1 key1=value1:NoSchedule
@@ -136,4 +136,28 @@ tolerations:
 - key: "key1"
   operator: "Exists"
   effect: "NoSchedule"
+```
+
+### Affinity and Anti-affinity
+Node affinity
+```yaml
+spec:
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+        - matchExpressions:
+          - key: topology.kubernetes.io/zone
+            operator: In
+            values:
+            - antarctica-east1
+            - antarctica-west1
+      preferredDuringSchedulingIgnoredDuringExecution:
+      - weight: 1
+        preference:
+          matchExpressions:
+          - key: another-node-label-key
+            operator: In
+            values:
+            - another-node-label-value
 ```

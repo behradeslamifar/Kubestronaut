@@ -59,14 +59,19 @@ These are the exam objectives you review and understand in order to pass the tes
 <details><summary>Cluster Architecture, Installation & Configuration 25%</summary>
 <p>
 
-- [Manage role based access control (RBAC)]()
-- [Prepare underlying infrastructure for installing a Kubernetes cluster]()
-- [Create and manage Kubernetes clusters using kubeadm]()
-- [Manage the lifecycle of Kubernetes clusters]()
-- [Implement and configure a highly-available control plane]()
-- [Use Helm and Kustomize to install cluster components]()
+- [Manage role based access control (RBAC)](https://kubernetes.io/docs/reference/access-authn-authz/rbac/)
+- [Prepare underlying infrastructure for installing a Kubernetes cluster](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/)
+- Create and manage Kubernetes clusters using kubeadm
+  - [Bootstraping Clusters with kubeadm](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/)
+  - [Administration with kubeadm](https://kubernetes.io/docs/tasks/administer-cluster/kubeadm/)
+- Manage the lifecycle of Kubernetes clusters
+  - [Safely Drain a Node](https://kubernetes.io/docs/tasks/administer-cluster/safely-drain-node/)
+  - [Node shutdown](https://kubernetes.io/docs/concepts/cluster-administration/node-shutdown/)
+- [Implement and configure a highly-available control plane](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/high-availability/)
+- Use Helm and Kustomize to install cluster components
+  - [Install metrics-server with Helm](https://artifacthub.io/packages/helm/metrics-server/metrics-server)
 - [Understand extension interfaces (CNI, CSI, CRI, etc.)]()
-- [Understand CRDs, install and configure operators]()
+- [Understand CRDs](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/), [install and configure operators](https://cka.virtualthoughts.co.uk/revision-topics/04-architecture/part-8/)
 
 </p>
 </details>
