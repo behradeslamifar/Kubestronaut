@@ -1,9 +1,11 @@
 
 # Certified Kubernetes Application Developer (CKAD)
 
-_Before to start_ 
-
-Ensure you have the right version of Kubernetes documentation selected (e.g. v1.31 as of 27th November. 2024 exam) especially for API objects and annotations. 
+Online resources that will help you prepare for taking the Kubernetes Certified Administrator Certification exam.
+   
+  **Disclaimer**: This is not likely a comprehensive list as the exam will be a moving target with the fast pace of k8s development - please m  ake a pull request if there something wrong or that should be added, or updated in here.
+   
+  I tried to restrict the cross references of resources to [kubernetes.io](https://kubernetes.io). Youtube videos and other blog resources are   optional; however, I still found them useful in my k8s learning journey.
 
 ## Prepare a Lab
 - [Kubernetes LAB](labs-ckad/README.md)
@@ -102,13 +104,3 @@ These are the exam objectives you review and understand in order to pass the tes
 
 </p>
 </details>
-
-## Practice Exam
-- [killer.sh: ckad](https://killer.sh/ckad)
-- [learning.oreilly.com: Labs](https://learning.oreilly.com/playlists/2e9fe6dc-2a05-47fe-ae0a-34d6485287cc/)
-
-## Online Courses
-- [linkedin.com: Certified Kubernetes Application Developer (CKAD) Exam Tips](https://www.linkedin.com/learning/certified-kubernetes-application-developer-ckad-cert-prep-exam-tips)
-
-## Books
-- [Certified Kubernetes Application Developer (CKAD) Study Guide, 2nd Edition](https://www.oreilly.com/library/view/certified-kubernetes-application/9781098152857/)
