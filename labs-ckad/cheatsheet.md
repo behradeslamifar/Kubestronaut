@@ -495,3 +495,39 @@ spec:
 ## Network Policies
 
 ```
+# Deny All Ingresss
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: deny-all-ingress
+  namespace: default
+spec:
+  podSelector: {}
+  policyTypes:
+  - Ingress
+  ingress: []
+
+# Deny All egress
+spec:
+  podSelector: {}
+  policyTypes:
+  - Egress
+  egress: []
+
+# Deny All both
+spec:
+  podSelector: {}
+  policyTypes:
+  - Ingress
+  - Egress
+  ingress: []
+  egress: []
+
+# Allow all 
+spec:
+  podSelector: {}
+  policyTypes:
+  - Ingress
+  ingress:
+  - {}
+```
