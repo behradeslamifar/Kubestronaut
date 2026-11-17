@@ -1,8 +1,8 @@
 # CKAD Cheat Sheet - Review before exam
 
-**Jump to:** [Application Design and Build](#Application-Design-and-Build) | [](#) | [](#) | [](#) | [](#) |
+**Jump to:** [Application Design and Build](#Application-Design-and-Build) | [](#) | [](#) | [](#) | [Network Policies](#Network-Policies) |
 
-## Application Design and Build 20%
+## Application Design and Build
 ```bash
 docker container commit -m "add new layer" container_name new_image_name
 docker container commit -C "new command" -m "new layer" container_name new_image_name
@@ -133,7 +133,8 @@ spec:
       mode: 01777
 ```
 
-# Application Deployment 20%
+## Application Deployment
+
 ```
 # Use Kubernetes primitives to implement common deployment strategies (e.g. blue/green or canary)
 metadata:
@@ -192,7 +193,8 @@ helm uninstall metric-server -n kube-system
 # Kustomize
 ```
 
-# Application Observability and Maintenance 15%
+## Application Observability and Maintenance
+
 ```
 # Probes and Health checks
 spec:
@@ -245,7 +247,8 @@ successThreshold: 3 #After 3 times probe success consider pod live and running, 
 terminationGracePeriodSeconds: 30 #30 seconds to force pod to shutdown
 ```
 
-# Application Environment, Configuration and Security 25%
+## Application Environment, Configuration and Security
+
 ```
 # RBAC
 k create role <name> --verb=get,list,watch --resource=pods -n <ns>
@@ -486,8 +489,9 @@ spec:
         - NET_RAW
 ```
 
-# Services and Networking 20%
+## Services and Networking
+
 ```
-# Network Policies
+## Network Policies
 
 ```
