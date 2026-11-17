@@ -1,6 +1,6 @@
 # CKAD Cheat Sheet - Review before exam
 
-**Jump to:** [Application Design and Build](#Application-Design-and-Build) | [](#) | [](#) | [](#) | [Services and Networking](#services-and-networking) |
+**Jump to:** [Application Design and Build](#Application-Design-and-Build) | [Application Deployment](#application-deployment) | [Application Observability and Maintenance](#application-observability-and-maintenance) | [Application Environment, Configuration and Security](#application-environment-configuration-and-security) | [Services and Networking](#services-and-networking) |
 
 ## Application Design and Build
 ```bash
