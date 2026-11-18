@@ -492,9 +492,7 @@ spec:
 ## Services and Networking
 
 ```
-## Network Policies
-
-```
+# Network Policies
 # Deny All Ingresss
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
