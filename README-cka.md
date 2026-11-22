@@ -7,7 +7,7 @@ Online resources that will help you prepare for taking the Kubernetes Certified 
 I tried to restrict the cross references of resources to [kubernetes.io](https://kubernetes.io). Youtube videos and other blog resources are optional; however, I still found them useful in my k8s learning journey.
 
 ## Prepare a Lab
-- [Kubernetes LAB](labs/README.md)
+- [Kubernetes LAB](labs-cka/README.md)
 
 ## Exam Objectives
 
