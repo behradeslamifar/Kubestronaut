@@ -1,6 +1,27 @@
-# Cluster Architecture, Installation & Configuration
+# Cheetsheet
+
+## Storage
+```
+# PV - cluster scoped
+# PVC - namespace scoped, must match: storageClassName, accessModes
+# Pod: spec.volumes[].persistentVolumeClaim.claimName + volumeMounts
+```
+Access modes: `ReadWriteOnce (RWO)` | `ReadOnlyMany (ROX)` | `ReadWriteMany (RWX)` | `ReadWriteOncePod (RWOP)`
+
+`RWO` = one node can mount read-write. `RWOP` = only one pod can mount read-write. Do not confuse the two.
+
+Reclaim: `Retain` (keep data) | `Delete` (remove PV)
 
 ## Manage role based access control (RBAC)
+```
+# RBAC 
+k create role <name> --verb=get,list,watch --resource=pods -n <ns>
+k create rolebinding <name> --role=<role> --serviceaccount=<ns>:<sa> -n <ns>
+k create clusterrole <name> --verb=get,list --resource=nodes
+k create clusterrolebinding <name> --clusterrole=<cr> --serviceaccount=<ns>:<sa>
+k auth can-i <verb> <resource> -n <ns> --as=system:serviceaccount:<ns>:<sa>
+```
+
 ## Prepare underlying infrastructure for installing a Kubernetes cluster
 ## Create and manage Kubernetes clusters using kubeadm
 Cluster Bootstrap
@@ -112,14 +133,37 @@ Node Management
 ```
 
 ## Implement and configure a highly-available control plane
+
 ## Use Helm and Kustomize to install cluster components
+
+```
+# helm
+helm repo add metrics-server https://kubernetes-sigs.github.io/metrics-server/
+helm repo update
+
+helm install <release> <chart> -n <ns>
+helm install <release> <chart> -n <ns> -f <values.yaml>
+helm upgrade <release> <chart> -n <ns> --set key=value
+helm rollback <release> <revision> -n <ns>
+
+helm upgrade --install metrics-server metrics-server/metrics-server
+
+# Verify
+helm list -n <ns>
+helm history metric-server -n kube-system
+
+# cleanup
+helm uninstall metric-server -n kube-system
+```
+
 ## Understand extension interfaces (CNI, CSI, CRI, etc.)
+
 ## Understand CRDs, install and configure operators
 
 # Workloads & Scheduling
 
 ## Understand application deployments and how to perform rolling update and rollbacks
-Cheetsheat
+
 ```bash
 k create deployment nginx-deployment --image nginx:latest --dry-run=client -o yaml > nginx.yaml
 k delete deployment nginx-deployment [--cascade=orphan]
